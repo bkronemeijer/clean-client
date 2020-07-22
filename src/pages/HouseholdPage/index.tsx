@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { fetchHouseholdWithUsers } from '../../store/household/actions'
 import { useDispatch } from 'react-redux'
+// import './household.scss'
 
 export default function HouseholdPage() {
   const dispatch = useDispatch()
@@ -11,8 +12,8 @@ export default function HouseholdPage() {
   }, [dispatch])
 
   return (
-    <div>
-      
+    <div className="household-page">
+      hoi
     </div>
   )
 }

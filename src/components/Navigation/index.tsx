@@ -8,7 +8,7 @@ import './navigation.scss'
 
 export default function Navigation() {
   return (
-    <Navbar bg="white" expand="lg">
+    <Navbar bg="white" expand="sm">
       <Navbar.Brand as={NavLink} to="/">
         <img src={logo} alt='Logo'/>
       </Navbar.Brand>

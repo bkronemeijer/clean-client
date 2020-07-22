@@ -20,7 +20,7 @@ export default function Navigation() {
             <Nav.Link as={NavLink} to="/tasks" >Tasks</Nav.Link>
           </div>
           <NavDropdown title="Logged in as USER" id="nav-dropdown">
-            <NavDropdown.Item>Settings</NavDropdown.Item>
+            <NavDropdown.Item as={NavLink} to="/settings" className="nav-dropdown-settings">Settings</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item>Logout</NavDropdown.Item>
           </NavDropdown>

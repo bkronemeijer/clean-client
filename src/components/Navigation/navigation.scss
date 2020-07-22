@@ -18,6 +18,21 @@ a {
   right: 0;
 }
 
+.dropdown-item {
+  width: auto !important;
+
+  &.active, &.focus, &:target {
+    background-color: #89e675 !important;
+    border-radius: 3px;
+  }
+  
+  &:hover {
+    background-color: lightgrey;
+    border-radius: 3px;
+  }
+
+}
+
 .nav-items-left{
   display: flex;
 }

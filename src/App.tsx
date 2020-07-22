@@ -9,6 +9,7 @@ import MyTaskPage from './pages/MyTaskPage';
 import HomePage from './pages/HomePage';
 import Navigation from './components/Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/my-task" component={MyTaskPage}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/login" component={Login}/>
+        <Route path="/settings" component={Settings}/>
       </Switch>
     </div>
   );

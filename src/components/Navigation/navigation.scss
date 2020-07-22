@@ -1,0 +1,23 @@
+a {
+  font-size: 17px;
+  margin: 4px 10px;
+}
+
+#nav-dropdown {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  a{
+    margin: 0;
+  }
+}
+
+.dropdown-menu {
+  left: auto !important;
+  right: 0;
+}
+
+.nav-items-left{
+  display: flex;
+}

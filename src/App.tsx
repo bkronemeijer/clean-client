@@ -7,10 +7,13 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import MyTaskPage from './pages/MyTaskPage';
 import HomePage from './pages/HomePage';
+import Navigation from './components/Navigation';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
+      <Navigation />
       <Switch>
         <Route exact path="/" component={HomePage}/>
         <Route path="/household" component={HouseholdPage}/>

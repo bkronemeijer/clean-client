@@ -4,11 +4,11 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from 'react-router-dom'
 import logo from '../../dustly-logo.svg'
-import './navigation.scss'
+// import './navigation.scss'
 
 export default function Navigation() {
   return (
-    <Navbar bg="white" expand="sm">
+    <Navbar bg="white" expand="sm" className="navigation">
       <Navbar.Brand as={NavLink} to="/">
         <img src={logo} alt='Logo'/>
       </Navbar.Brand>

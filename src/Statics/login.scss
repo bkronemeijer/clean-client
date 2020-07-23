@@ -17,6 +17,10 @@
         flex-direction: row;
         justify-content: space-between;
       }
+
+      input {
+        max-width: 90vw;
+      }
       
       label {
         margin-right: 10px;

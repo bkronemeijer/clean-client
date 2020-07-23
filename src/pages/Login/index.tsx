@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { login } from '../../store/user/actions';
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -11,7 +12,8 @@ export default function Login() {
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    console.log("submitted", email, password)
+    console.log("click")
+    dispatch(login(email, password))
   }
 
   return (

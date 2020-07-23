@@ -5,5 +5,10 @@
   justify-content: center;
   margin-top: 40px;
   width: 70vw;
-  background-color: $color-bright-green;
+
+  td {
+    font-size: 18px;
+    padding: 10px;
+    text-align: left;
+  }
 }

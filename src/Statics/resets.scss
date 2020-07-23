@@ -4,13 +4,3 @@ body {
   font-family: "sfproroundedregular";
 }
 
-h1 {
-  padding: $margin-mobile;
-  font-family: "sfproroundedbold";
-  font-size: 20px;
-  
-  @include lg {
-    padding: $margin-desktop;
-    font-size: 36px;
-  }
-}

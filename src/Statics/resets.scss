@@ -1,11 +1,12 @@
 body {
   margin: 0;
   font-size: 16px;
+  font-family: "sfproroundedregular";
 }
 
 h1 {
   padding: $margin-mobile;
-  font-weight: bold;
+  font-family: "sfproroundedbold";
   font-size: 20px;
   
   @include lg {

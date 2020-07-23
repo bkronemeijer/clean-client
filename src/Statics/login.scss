@@ -1,0 +1,30 @@
+.login-page {
+  form {
+    display: flex;
+    flex-direction: column;
+
+    @include lg {
+      align-items: last baseline;
+    }
+    
+    .login-field{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      
+      @include lg {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      input {
+        max-width: 90vw;
+      }
+      
+      label {
+        margin-right: 10px;
+      }
+    }
+  }
+}

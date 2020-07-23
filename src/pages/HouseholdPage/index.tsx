@@ -15,7 +15,7 @@ export default function HouseholdPage() {
   }, [dispatch])
 
   return (
-    <div className="household-page">
+    <div className="page-content household-page">
       {
         household && users ? 
           <div>

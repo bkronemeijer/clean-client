@@ -3,9 +3,11 @@
 @import './App.scss';
 @import './resets.scss';
 @import './fonts.scss';
+@import './global.scss';
 
 // page styling
 @import './household.scss';
+@import './login.scss';
 
 // component styling
 @import './navigation.scss'

@@ -6,13 +6,25 @@
 
     label {
       display: flex;
+      justify-content: center;
       margin-right: 10px;
       width: 130px;
+
+      @include lg {
+        justify-content: flex-start;
+      }
     }
 
     .login-selector {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       margin-bottom: 10px;
+
+      @include lg {
+        flex-direction: row;
+        
+      }
     }
 
     .login-field {

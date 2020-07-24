@@ -45,7 +45,7 @@ export type clearMessage = {
 
 export type userLogin = {
   type: typeof LOGIN_SUCCESS
-  userWithToken: User
+  payload: User
 }
 
 export type fetchHouseholdWithUser = {

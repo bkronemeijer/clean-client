@@ -11,7 +11,7 @@ import {
 export const userLoggedIn = (userWithToken: User): userLogin => {
   return {
     type: LOGIN_SUCCESS,
-    userWithToken
+    payload: userWithToken
   }
 }
 

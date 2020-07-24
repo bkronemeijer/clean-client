@@ -35,6 +35,7 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 50px;
+      justify-content: center;
       
       @include lg {
         align-items: last baseline;
@@ -44,7 +45,7 @@
     .household-form-fields {
       display: flex;
       flex-direction: column;
-      margin-bottom: 50px;
+      justify-content: center;
     }
   }
 }

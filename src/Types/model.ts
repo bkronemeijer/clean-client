@@ -14,6 +14,14 @@ export type Household = {
   recurrence: number
 }
 
+export type HouseholdWithUsers = {
+  id: number
+  nickName: string
+  startDate: Date
+  recurrence: number
+  users: User[]
+}
+
 export type Task = {
   id: number
   title: string
@@ -21,3 +29,14 @@ export type Task = {
   householdId: number
   userId: number
 }
+
+export type Message = {
+  variant: string;
+  dismissable: boolean;
+  text: string;
+};
+
+export type AppState = {
+  loading: Boolean;
+  message: Message | null;
+};

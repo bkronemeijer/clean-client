@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from 'react-router-dom'
 import logo from '../../dustly-logo.svg'
-// import './navigation.scss'
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../store/user/selectors';
+import LoggedIn from './LoggedIn';
+import LoggedOut from './LoggedOut';
 
 export default function Navigation() {
+  const token = useSelector(selectToken)
+  const navBarControl = token ? <LoggedIn /> : <LoggedOut />
+
+  useEffect(() => {
+    console.log("token", token)
+  }, [token])
+
   return (
     <Navbar bg="white" expand="sm" className="navigation">
       <Navbar.Brand as={NavLink} to="/">
@@ -14,18 +24,7 @@ export default function Navigation() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ width: "100%" }} fill>
-          <div className="nav-items-left">
-            <Nav.Link as={NavLink} to="/household" >Household</Nav.Link>
-            <Nav.Link as={NavLink} to="/tasks" >Tasks</Nav.Link>
-          </div>
-          <NavDropdown title="Logged in as USER" id="nav-dropdown">
-            <NavDropdown.Item as={NavLink} to="/settings" className="nav-dropdown-settings">Settings</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item>Logout</NavDropdown.Item>
-          </NavDropdown>
-          {/* {loginLogoutControls} */}
-        </Nav>
+          {navBarControl}
       </Navbar.Collapse>
     </Navbar>
   )

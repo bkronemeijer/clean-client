@@ -4,6 +4,7 @@ import {
   Task,
   Message
 } from '../../Types/model'
+import { UserInStore } from './reducerTypes'
 
 // USER ACTION TYPES
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
@@ -21,9 +22,9 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 
 
 export type StoreState = {
-  users: User,
-  households: Household,
-  tasks: Task,
+  user: UserInStore,
+  household: Household,
+  task: Task,
   // appState: Appstate
 }
 

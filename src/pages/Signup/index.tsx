@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../store/user/actions'
+import { useHistory } from 'react-router-dom'
 
 export default function Signup() {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const [name, setName] = useState<string>("")
   const [email, setEmail] = useState<string>("")
@@ -24,6 +26,7 @@ export default function Signup() {
     } else {
       setErrorMessage("Passwords do not match")
     }
+    history.push("/settings")
   }
 
   return (

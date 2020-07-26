@@ -7,3 +7,7 @@ export const selectHouseholdWithUsers = (reduxState: any) => {
 export const selectToken = (reduxState: StoreState) => {
   return reduxState.user.token
 }
+
+export const selectLoggedInName = (reduxState: StoreState) => {
+  return reduxState.user.name
+}

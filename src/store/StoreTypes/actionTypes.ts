@@ -8,6 +8,8 @@ import { UserInStore } from './reducerTypes'
 
 // USER ACTION TYPES
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const LOG_OUT = "LOG_OUT"
+export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID"
 
 // HOUSEHOLD ACTION TYPES
 export const HOUSEHOLD_USERS_FETCHED = "HOUSEHOLD_USERS_FETCHED"
@@ -46,6 +48,15 @@ export type clearMessage = {
 
 export type userLogin = {
   type: typeof LOGIN_SUCCESS
+  payload: User
+}
+
+export type userLogout = {
+  type: typeof LOG_OUT
+}
+
+export type tokenValidation = {
+  type: typeof TOKEN_STILL_VALID
   payload: User
 }
 

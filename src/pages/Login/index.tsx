@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/user/actions';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const dispatch = useDispatch();
+  const history = useHistory();
+
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    console.log("click")
     dispatch(login(email, password))
+    history.push("/household")
   }
 
   return (

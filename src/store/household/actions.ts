@@ -21,11 +21,15 @@ export const householdWithUsersFetched = (householdWithUsers: HouseholdWithUsers
 export function fetchHouseholdWithUsers (householdId: number) {
   return async function thunk (dispatch: Dispatch, getState: GetState) {
     const fetchUrl = `${apiUrl}/household`
+    const token = localStorage.getItem("token")
 
     const response = await axios.post(fetchUrl, {
       id: householdId
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     })
-    // auth headers moeten nog worden toegevoegd
 
     dispatch(householdWithUsersFetched(response.data))
 

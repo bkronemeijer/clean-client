@@ -38,8 +38,9 @@ export function login (email: string, password: string) {
       email,
       password
     })
-
+    
     dispatch(userLoggedIn(response.data))
+    dispatch(tokenStillValid(response.data.token))
   }
 }
 

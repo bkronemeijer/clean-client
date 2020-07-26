@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import HouseholdPage from './pages/HouseholdPage';
 import TaskPage from './pages/TaskPage';
@@ -10,8 +10,16 @@ import Navigation from './components/Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Settings from './pages/Settings';
 import './Statics/shared.scss'
+import { useDispatch } from 'react-redux';
+import { getUserWithStoredToken } from './store/user/actions';
 
 function App() {
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Navigation />

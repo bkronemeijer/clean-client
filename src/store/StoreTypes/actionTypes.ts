@@ -4,9 +4,12 @@ import {
   Task,
   Message
 } from '../../Types/model'
+import { UserInStore } from './reducerTypes'
 
 // USER ACTION TYPES
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const LOG_OUT = "LOG_OUT"
+export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID"
 
 // HOUSEHOLD ACTION TYPES
 export const HOUSEHOLD_USERS_FETCHED = "HOUSEHOLD_USERS_FETCHED"
@@ -21,9 +24,9 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 
 
 export type StoreState = {
-  users: User,
-  households: Household,
-  tasks: Task,
+  user: UserInStore,
+  household: Household,
+  task: Task,
   // appState: Appstate
 }
 
@@ -45,6 +48,15 @@ export type clearMessage = {
 
 export type userLogin = {
   type: typeof LOGIN_SUCCESS
+  payload: User
+}
+
+export type userLogout = {
+  type: typeof LOG_OUT
+}
+
+export type tokenValidation = {
+  type: typeof TOKEN_STILL_VALID
   payload: User
 }
 

@@ -7,8 +7,6 @@ import {
   LOGIN_SUCCESS,
   userLogin
 } from '../StoreTypes/actionTypes'
-import thunk from 'redux-thunk'
-import { selectToken } from './selectors'
 
 export const userLoggedIn = (userWithToken: User): userLogin => {
   return {

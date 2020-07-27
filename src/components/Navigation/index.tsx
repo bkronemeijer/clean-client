@@ -1,21 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from 'react-router-dom'
 import logo from '../../dustly-logo.svg'
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../store/user/selectors';
 import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
 
-export default function Navigation() {
-  const token = useSelector(selectToken)
+export default function Navigation(props: {userName: string}) {
+  const token = localStorage.getItem("token")
   const navBarControl = token ? <LoggedIn /> : <LoggedOut />
-
-  useEffect(() => {
-    console.log("token", token)
-  }, [token])
 
   return (
     <Navbar bg="white" expand="sm" className="navigation">

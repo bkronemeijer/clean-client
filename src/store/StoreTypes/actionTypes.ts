@@ -15,6 +15,7 @@ export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID"
 export const HOUSEHOLD_USERS_FETCHED = "HOUSEHOLD_USERS_FETCHED"
 
 // TASK ACTION TYPES
+export const TASKS_FETCHED = "TASKS_FETCHED"
 
 // APPSTATE ACTION TYPES
 export const APP_LOADING = "APP_LOADING"
@@ -63,6 +64,11 @@ export type tokenValidation = {
 export type fetchHouseholdWithUser = {
   type: typeof HOUSEHOLD_USERS_FETCHED
   household: Household
+}
+
+export type fetchTask = {
+  type: typeof TASKS_FETCHED
+  payload: Task[]
 }
 
 export type TaskActionTypes = any

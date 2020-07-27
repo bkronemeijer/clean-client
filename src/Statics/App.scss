@@ -18,5 +18,13 @@
     }
   }
 
+  h2 {
+    font-family: "sfproroundedmedium";
+    font-size: 22px;
+    
+    @include lg {
+      font-size: 30px;
+    }
+  }
 
 }

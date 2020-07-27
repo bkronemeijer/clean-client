@@ -10,11 +10,13 @@ import Navigation from './components/Navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Settings from './pages/Settings';
 import './Statics/shared.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserWithStoredToken } from './store/user/actions';
+import { selectLoggedInName } from './store/user/selectors';
 
 function App() {
   const dispatch = useDispatch()
+  const user = useSelector(selectLoggedInName)
   
   useEffect(() => {
     dispatch(getUserWithStoredToken());
@@ -22,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation />
+      <Navigation userName={user}/>
       <div className="App-content">
         <Switch>
           <Route exact path="/" component={HomePage}/>

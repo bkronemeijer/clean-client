@@ -28,6 +28,8 @@ export type Task = {
   description: Text
   householdId: number
   userId: number
+  length: number
+  map: any
 }
 
 export type Message = {

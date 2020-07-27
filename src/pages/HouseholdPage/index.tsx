@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectHouseholdWithUsers } from '../../store/household/selectors'
 import UserRow from '../../components/UserRow'
 import { selectUserHouseholdId } from '../../store/user/selectors'
+import { User } from '../../Types/model'
 
 export default function HouseholdPage() {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ export default function HouseholdPage() {
 
             <table>
               <tbody>
-                {users.map((user: any) => {
+                {users.map((user: User) => {
                   return (
                     <UserRow key={user.id} info={user} />
                   )

@@ -20,19 +20,21 @@ export default function TaskPage() {
   console.log(tasks)
 
   return (
-    <div className="page-content">
+    <div className="page-content task-page">
       {
         tasks ? 
           tasks.length !== 0 ?
             <div>
               <h1>Household tasks</h1>
-              {
-                tasks.map((task: Task) => {
-                  return (
-                    <TaskCard key={task.id} task={task}/>
-                  )
-                })
-              }
+              <div className="task-card-container">
+                {
+                  tasks.map((task: Task) => {
+                    return (
+                      <TaskCard key={task.id} task={task}/>
+                    )
+                  })
+                }
+              </div>
             </div>
           :
             <div>

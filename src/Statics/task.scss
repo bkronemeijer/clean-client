@@ -1,0 +1,22 @@
+.task-page {
+  .task-card-container {
+    display: flex;
+    flex-direction: column;
+
+    @include lg {
+      flex-direction: row;
+    }
+    
+    .task-card {
+      border: 1px solid grey;
+      border-radius: 4px;
+      margin: $margin-mobile;
+      padding: $margin-mobile;
+      width: 80vw;
+
+      @include lg {
+        width: 350px;
+      }
+    }
+  }
+}

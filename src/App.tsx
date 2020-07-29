@@ -13,6 +13,7 @@ import './Statics/shared.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserWithStoredToken } from './store/user/actions';
 import { selectLoggedInName } from './store/user/selectors';
+import MessageBox from './components/MessageBox';
 
 function App() {
   const dispatch = useDispatch()
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Navigation userName={user}/>
+      <MessageBox />
       <div className="App-content">
         <Switch>
           <Route exact path="/" component={HomePage}/>

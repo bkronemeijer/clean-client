@@ -2,7 +2,8 @@ import {
   User,
   Household,
   Task,
-  Message
+  Message,
+  AppState
 } from '../../Types/model'
 import { UserInStore } from './reducerTypes'
 
@@ -29,7 +30,7 @@ export type StoreState = {
   user: UserInStore,
   household: Household,
   task: Task,
-  // appState: Appstate
+  appState: AppState
 }
 
 export type GetState = () => StoreState

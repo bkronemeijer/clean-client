@@ -7,6 +7,7 @@ import {
   fetchTask
 } from '../StoreTypes/actionTypes'
 import { Task } from '../../Types/model'
+import { appDoneLoading } from '../appState/actions'
 
 export const tasksFetched = (tasks: Task[]): fetchTask => ({
   type: TASKS_FETCHED,
@@ -27,8 +28,8 @@ export function fetchTasks (householdId: number) {
       }
     })
 
-    dispatch(tasksFetched(response.data))
-
-    console.log("hoi dit is een response van tasks", response)
+    if (response.status >= 200 || response.status < 300) {
+      dispatch(tasksFetched(response.data))
+    }
   }
 }

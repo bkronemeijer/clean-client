@@ -7,6 +7,12 @@
       align-items: last baseline;
     }
 
+    .login-footer{
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+    }
+
     .login-container {
       display: flex;
       flex-direction: column;

@@ -13,10 +13,14 @@ import './Statics/shared.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserWithStoredToken } from './store/user/actions';
 import { selectLoggedInName } from './store/user/selectors';
+import MessageBox from './components/MessageBox';
+import { selectAppLoading } from './store/appState/selectors';
+import Loading from './components/Loading';
 
 function App() {
   const dispatch = useDispatch()
   const user = useSelector(selectLoggedInName)
+  const isLoading = useSelector(selectAppLoading);
   
   useEffect(() => {
     dispatch(getUserWithStoredToken());
@@ -25,6 +29,8 @@ function App() {
   return (
     <div className="App">
       <Navigation userName={user}/>
+      <MessageBox />
+      {isLoading ? <Loading /> : null}
       <div className="App-content">
         <Switch>
           <Route exact path="/" component={HomePage}/>

@@ -7,7 +7,6 @@ import {
   fetchTask
 } from '../StoreTypes/actionTypes'
 import { Task } from '../../Types/model'
-import { appDoneLoading } from '../appState/actions'
 
 export const tasksFetched = (tasks: Task[]): fetchTask => ({
   type: TASKS_FETCHED,

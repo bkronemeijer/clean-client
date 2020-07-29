@@ -31,11 +31,12 @@ export const tokenStillValid = (userWithToken: User): tokenValidation => {
 export function login (email: string, password: string) {
   return async function thunk(dispatch: Dispatch, getState: GetState){
     const postUrl = `${apiUrl}/login`
-
+    
     const response = await axios.post(postUrl, {
       email,
       password
     })
+    console.log(response.data)
     
     dispatch(userLoggedIn(response.data))
     dispatch(tokenStillValid(response.data.token))

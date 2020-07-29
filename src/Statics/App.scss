@@ -11,6 +11,7 @@
     padding: $margin-mobile;
     font-family: "sfproroundedbold";
     font-size: 34px;
+    // color: $color-dark-teal;
     
     @include lg {
       padding: $margin-desktop;
@@ -21,6 +22,7 @@
   h2 {
     font-family: "sfproroundedmedium";
     font-size: 22px;
+    // color: $color-dark-beige;
     
     @include lg {
       font-size: 30px;

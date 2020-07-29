@@ -23,7 +23,8 @@
       width: auto !important;
   
       &.active, &.focus, &:target {
-        background-color: #89e675 !important;
+        // background-color: #89e675 !important;
+        background: $color-green-gradient !important;
         border-radius: 3px;
       }
       

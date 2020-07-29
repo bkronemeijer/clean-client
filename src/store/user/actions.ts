@@ -5,13 +5,21 @@ import { GetState, TOKEN_STILL_VALID, tokenValidation, LOG_OUT, userLogout } fro
 import { User } from '../../Types/model'
 import {
   LOGIN_SUCCESS,
-  userLogin
+  LOGIN_FAIL,
+  userLogin,
+  loginFailed
 } from '../StoreTypes/actionTypes'
 
 export const userLoggedIn = (userWithToken: User): userLogin => {
   return {
     type: LOGIN_SUCCESS,
     payload: userWithToken
+  }
+}
+
+export const loginFails = (): loginFailed => {
+  return {
+    type: LOGIN_FAIL
   }
 }
 
@@ -28,7 +36,7 @@ export const tokenStillValid = (userWithToken: User): tokenValidation => {
   }
 }
 
-export function login (email: string, password: string) {
+export function login (email: string, password: string, setSuccessful: any) {
   return async function thunk(dispatch: Dispatch, getState: GetState){
     const postUrl = `${apiUrl}/login`
 
@@ -37,8 +45,16 @@ export function login (email: string, password: string) {
       password
     })
     
-    dispatch(userLoggedIn(response.data))
-    dispatch(tokenStillValid(response.data.token))
+    if (response.status >= 200 || response.status < 300) {
+      dispatch(userLoggedIn(response.data))
+      dispatch(tokenStillValid(response.data.token))
+      setSuccessful(true)
+
+      return
+    } 
+    
+    setSuccessful(false)
+
   }
 }
 

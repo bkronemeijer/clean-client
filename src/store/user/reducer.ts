@@ -1,7 +1,8 @@
-import { LOGIN_SUCCESS, LOG_OUT, TOKEN_STILL_VALID} from "../StoreTypes/actionTypes";
+import { LOGIN_SUCCESS, LOG_OUT, TOKEN_STILL_VALID, LOGIN_FAIL} from "../StoreTypes/actionTypes";
 
 const initialState = {
   token: localStorage.getItem("token"),
+  loginSucces: null,
   name: null,
   email: null
 };
@@ -10,11 +11,17 @@ export default (state = initialState, action: any) => {
   switch (action.type) {
     case LOGIN_SUCCESS: 
       localStorage.setItem("token", action.payload.token)
-      console.log("hi from reducer user", action.payload)
       return {
         ...state,
+        loginSucces: true,
         name: action.payload.name,
         email: action.payload.email
+      }
+    
+    case LOGIN_FAIL: 
+      return {
+        ...state,
+        loginSucces: false
       }
 
     case LOG_OUT:

@@ -12,7 +12,12 @@ export const selectLoggedInName = (reduxState: StoreState) => {
   return reduxState.user.name
 }
 
+export const selectLoggedInUserId = (reduxState: StoreState) => {
+  return reduxState.user.id
+}
+
 export const selectUserHouseholdId = (reduxState: StoreState) => {
+  console.log("it is de selector", reduxState.user.householdId)
   return reduxState.user.householdId
 }
 

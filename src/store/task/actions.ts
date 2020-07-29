@@ -33,3 +33,24 @@ export function fetchTasks (householdId: number) {
     }
   }
 }
+
+export function fetchCurrentTask (userId: number, recurrence: number) {
+  return async function thunk (dispatch: Dispatch, getState: GetState) {
+    console.log("my task action!", userId, recurrence)
+    const fetchUrl = `${apiUrl}/mytask`
+    const token = localStorage.getItem("token")
+
+    const response = await axios.post(fetchUrl, {
+      userId,
+      recurrence
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    console.log(response.data)
+    if (response.status >= 200 || response.status < 300) {
+      dispatch(tasksFetched(response.data))
+    }
+  }
+}

@@ -9,7 +9,7 @@ import {
   userLogin,
   loginFailed
 } from '../StoreTypes/actionTypes'
-import { showMessageWithTimeout, setMessage } from '../appState/actions'
+import { showMessageWithTimeout, setMessage, appLoading, appDoneLoading } from '../appState/actions'
 
 export const userLoggedIn = (userWithToken: User): userLogin => {
   return {
@@ -39,6 +39,7 @@ export const tokenStillValid = (userWithToken: User): tokenValidation => {
 
 export function login (email: string, password: string) {
   return async function thunk(dispatch: Dispatch, getState: GetState){
+    dispatch(appLoading())
     const postUrl = `${apiUrl}/login`
 
     try {
@@ -54,10 +55,10 @@ export function login (email: string, password: string) {
           //@ts-ignore
           showMessageWithTimeout("success", false, "Welcome back!", 1500)
         )
-        return
       } else {
         console.log("not a success")
       }
+      dispatch(appDoneLoading())
 
     } catch (error) {
       if (error.response) {
@@ -67,49 +68,68 @@ export function login (email: string, password: string) {
         console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
+      dispatch(appDoneLoading())
     }
   }
 }
 
 export function signup (name: string, email: string, password: string, action: string, householdName: string, startDate: string, recurrence: string | number) {
   return async function thunk(dispatch: Dispatch, getState: GetState){
+    dispatch(appLoading())
     const postUrl = `${apiUrl}/signup`
 
-    if (recurrence === "weekly") {
-      recurrence = 7
-    } else if (recurrence === "biweekly") {
-      recurrence = 14
+    try {
+      if (recurrence === "weekly") {
+        recurrence = 7
+      } else if (recurrence === "biweekly") {
+        recurrence = 14
+      }
+  
+      let response
+  
+      if (action === "create") {
+        response = await axios.post(postUrl, {
+          name,
+          email,
+          password,
+          action,
+          householdName,
+          startDate,
+          recurrence
+        })
+      } else if (action === "join") {
+        response = await axios.post(postUrl, {
+          name,
+          email,
+          password,
+          action,
+          householdName,
+        })
+      }
+  
+      if (response === undefined) {
+        return
+      }
+  
+      if (response.request.status >= 200 && response.request.status < 300) {
+        dispatch(userLoggedIn(response.data))
+        dispatch(
+          //@ts-ignore
+          showMessageWithTimeout("success", false, "Welcome to dustly!", 1500)
+        )
+      }
+      dispatch(appDoneLoading())
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
+      dispatch(appDoneLoading())
     }
 
-    let response
-
-    if (action === "create") {
-      response = await axios.post(postUrl, {
-        name,
-        email,
-        password,
-        action,
-        householdName,
-        startDate,
-        recurrence
-      })
-    } else if (action === "join") {
-      response = await axios.post(postUrl, {
-        name,
-        email,
-        password,
-        action,
-        householdName,
-      })
-    }
-
-    if (response === undefined) {
-      return
-    }
-
-    if (response.request.status >= 200 && response.request.status < 300) {
-      dispatch(userLoggedIn(response.data))
-    }
   }
 }
 

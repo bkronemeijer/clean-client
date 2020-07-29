@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { login } from '../../store/user/actions';
 import { useHistory, Link } from 'react-router-dom';
-import { selectLoginSuccess } from '../../store/user/selectors';
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
@@ -12,15 +11,11 @@ export default function Login() {
 
   const submitHandler = (e: any) => {
     e.preventDefault()
-    try {
-      dispatch(login(email, password))
-    } catch (error) {
-      console.log(error)
-    }
+    dispatch(login(email, password))
   }
 
   if (localStorage.getItem("token")) {
-    history.push("/household") // TODO: only redirect if successful
+    history.push("/household")
   }
 
   return (
@@ -32,11 +27,6 @@ export default function Login() {
             <label htmlFor="email">Email</label>
             <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
-          {/* { !loginSuccess ?
-            <p className="login-warning">Unknown email address, <Link to="/signup">sign up</Link></p>
-          :
-          <p></p>
-          } */}
         </div>
         <div className="login-field">
           <label htmlFor="password">Password</label>

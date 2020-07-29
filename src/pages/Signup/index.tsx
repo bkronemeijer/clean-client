@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../store/user/actions'
 import { useHistory } from 'react-router-dom'
+import { setMessage } from '../../store/appState/actions'
 
 export default function Signup() {
   const dispatch = useDispatch()
@@ -15,17 +16,20 @@ export default function Signup() {
   const [householdName, setHouseholdName] = useState<string>("")
   const [startDate, setstartDate] = useState<string>("")
   const [recurrence, setRecurrence] = useState<string>("weekly")
-  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const submitHandler = (e: any) => {
+    
     e.preventDefault()
     console.log(name, email, password, action, householdName, startDate, recurrence)
 
     if (password === repeatPassword) {
       dispatch(signup(name, email, password, action, householdName, startDate, recurrence))
     } else {
-      setErrorMessage("Passwords do not match")
+      dispatch(setMessage("danger", true, "Passwords do not match"))
     }
+  }
+  
+  if (localStorage.getItem("token")) {
     history.push("/settings")
   }
 
@@ -81,7 +85,6 @@ export default function Signup() {
           : <p></p>
         }
         <div>
-          <p>{errorMessage}</p>
           <button>Sign up</button>
         </div>
       </form>

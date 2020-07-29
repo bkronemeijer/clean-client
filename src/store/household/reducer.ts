@@ -1,3 +1,5 @@
+import { LOG_OUT } from "../StoreTypes/actionTypes";
+
 const initialState = {
   loading: false,
   household: {}
@@ -11,6 +13,10 @@ export default (state = initialState, action: any) => {
         ...state,
         household: action.payload
       }
+
+    case LOG_OUT:
+      return initialState
+    
     default:
       return state;
   }

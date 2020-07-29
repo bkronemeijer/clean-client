@@ -5,6 +5,7 @@ import { selectHouseholdWithUsers } from '../../store/household/selectors'
 import UserRow from '../../components/UserRow'
 import { selectUserHouseholdId } from '../../store/user/selectors'
 import { User } from '../../Types/model'
+import Loading from '../../components/Loading'
 
 export default function HouseholdPage() {
   const dispatch = useDispatch()
@@ -37,7 +38,7 @@ export default function HouseholdPage() {
           </div>
         :
 
-        <p><em>Loading...</em></p>
+        <Loading />
       }
     </div>
   )

@@ -5,8 +5,6 @@ import { fetchTasks } from '../../store/task/actions'
 import { selectTasks } from '../../store/task/selectors'
 import { Task } from '../../Types/model'
 import TaskCard from '../../components/TaskCard'
-import { appLoading } from '../../store/appState/actions'
-import { selectAppLoading } from '../../store/appState/selectors'
 import Loading from '../../components/Loading'
 
 export default function TaskPage() {

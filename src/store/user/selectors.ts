@@ -12,6 +12,10 @@ export const selectLoggedInName = (reduxState: StoreState) => {
   return reduxState.user.name
 }
 
+export const selectLoggedInUserId = (reduxState: StoreState) => {
+  return reduxState.user.id
+}
+
 export const selectUserHouseholdId = (reduxState: StoreState) => {
   return reduxState.user.householdId
 }
@@ -20,3 +24,4 @@ export const selectLoginSuccess = (reduxState: StoreState) => {
   console.log('hi from selector', reduxState.user.loginSuccess, reduxState.user)
   return reduxState.user
 }
+

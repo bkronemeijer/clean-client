@@ -6,6 +6,7 @@ import {
   HOUSEHOLD_USERS_FETCHED
 } from '../StoreTypes/actionTypes'
 import { HouseholdWithUsers } from '../../Types/model'
+import { setMessage } from '../appState/actions'
 
 // export const householdWithUsersFetched = (payload: any) => ({
 //   type: HOUSEHOLD_USERS_FETCHED,
@@ -20,19 +21,34 @@ export const householdWithUsersFetched = (householdWithUsers: HouseholdWithUsers
 
 export function fetchHouseholdWithUsers (householdId: number) {
   return async function thunk (dispatch: Dispatch, getState: GetState) {
+    if (!householdId) {
+      return
+    }
+
     const fetchUrl = `${apiUrl}/household`
     const token = localStorage.getItem("token")
 
-    const response = await axios.post(fetchUrl, {
-      id: householdId
-    }, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    try {
+      const response = await axios.post(fetchUrl, {
+        id: householdId
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+  
+      dispatch(householdWithUsersFetched(response.data))
+      
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
       }
-    })
+    }
 
-    dispatch(householdWithUsersFetched(response.data))
 
-    console.log("hoi dit is een response", response)
   }
 }

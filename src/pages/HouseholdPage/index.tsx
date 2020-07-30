@@ -14,9 +14,9 @@ export default function HouseholdPage() {
   const users = household.users
 
   useEffect(() => {
-    if (householdId){
-      dispatch(fetchHouseholdWithUsers(householdId))
-    }
+    console.log(householdId)
+    // setTimeout(function() {dispatch(fetchHouseholdWithUsers(householdId))}, 2000)
+    dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
 
   return (

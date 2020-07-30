@@ -29,7 +29,16 @@ export type Task = {
   householdId: number
   userId: number
   length: number
-  map: any
+}
+
+export type CurrentTask = {
+  id: number
+  deadline: Date
+  isDone: boolean
+  task: Task
+  userId: number
+  taskId: number
+  length: number
 }
 
 export type Message = {

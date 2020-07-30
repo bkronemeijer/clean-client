@@ -21,7 +21,6 @@ export default (state = initialState, action: AppStateActionTypes) => {
       return { ...state, loading: false };
 
     case SET_MESSAGE:
-      console.log("hi from appstate reducer", action.message);
       return { ...state, message: { ...action.message } };
 
     case CLEAR_MESSAGE:

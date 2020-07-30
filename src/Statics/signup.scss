@@ -4,6 +4,7 @@
   padding: 50px 30px;
   text-align: left;
   border-radius: 12px;
+  margin-bottom: 30px;
   
   @include lg {
     width: 600px;
@@ -55,6 +56,7 @@
       flex-direction: column;
       // align-items: center;
       margin-bottom: 10px;
+      width: 100%;
       
       @include lg {
         flex-direction: row;

@@ -1,39 +1,13 @@
 .login-page {
   width: 300px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
   background-color: #f2f2f2;
   padding: 50px 30px;
   text-align: left;
   border-radius: 12px;
 
-  // h1 {
-  //   padding: 0;
-  //   margin-bottom: 20px;
-  //   font-size: 40px;
-  //   text-align: center;
-  // }
-
   form {
-    // display: flex;
-    // flex-direction: column;
-
-    // @include lg {
-    //   align-items: last baseline;
-    // }
-    
     .login-field{
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
       margin-bottom: 10px;
-      
-      // @include lg {
-      //   flex-direction: row;
-      //   justify-content: space-between;
-      // }
 
       input {
         width: 100%;
@@ -44,19 +18,18 @@
         font-weight: 400;
       }
 
+      input[type="text"], input[type="password"], input[type="email"] {
+        max-width: 70vw;
+        padding: 6px 10px;
+        border: 0;
+        outline: none;
+        border-radius: 4px;
+        transition: all 0.3s ease; 
+    
+        &:focus {
+          box-shadow: 0 0 0 2px blue;
+        }
+      }
     }
-
-    // button {
-    //   // background: $color-green-gradient;
-    //   background-color: #7ac769;
-    //   color: white;
-    //   font-family: "sfproroundedmedium";
-    //   font-size: 18px;
-    //   border-radius: 12px;
-    //   padding: 8px 36px;
-    //   width: 100%;
-    //   border: 0;
-    //   margin-top: 20px;
-    // }
   }
 }

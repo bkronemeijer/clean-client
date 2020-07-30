@@ -15,7 +15,7 @@ export default function Login() {
   }
 
   if (localStorage.getItem("token")) {
-    setTimeout(function() {history.push("/household")}, 500)
+    history.push("/household")
   }
 
   return (

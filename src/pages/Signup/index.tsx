@@ -24,6 +24,7 @@ export default function Signup() {
   const [recurrence, setRecurrence] = useState<string>("weekly")
 
   const submitHandler = (e: any) => {
+    
     e.preventDefault()
     console.log(name, email, password, action, householdName, startDate, recurrence)
 
@@ -32,6 +33,9 @@ export default function Signup() {
     } else {
       dispatch(setMessage("danger", true, "Passwords do not match"))
     }
+  }
+  
+  if (localStorage.getItem("token")) {
     history.push("/settings")
   }
 

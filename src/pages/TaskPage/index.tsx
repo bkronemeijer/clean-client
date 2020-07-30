@@ -5,6 +5,9 @@ import { fetchTasks } from '../../store/task/actions'
 import { selectTasks } from '../../store/task/selectors'
 import { Task } from '../../Types/model'
 import TaskCard from '../../components/TaskCard'
+import { appLoading } from '../../store/appState/actions'
+import { selectAppLoading } from '../../store/appState/selectors'
+import Loading from '../../components/Loading'
 
 export default function TaskPage() {
   const dispatch = useDispatch()
@@ -16,8 +19,6 @@ export default function TaskPage() {
       dispatch(fetchTasks(householdId))
     }
   }, [dispatch, householdId])
-
-  console.log(tasks)
 
   return (
     <div className="page-content task-page">
@@ -43,7 +44,7 @@ export default function TaskPage() {
             </div>
         :
 
-        <p><em>Loading...</em></p>
+        <Loading />
       }
     </div>
   )

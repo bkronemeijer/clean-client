@@ -1,15 +1,11 @@
 .signup-page {
-  width: 80vw;
-  background-color: #f2f2f2;
-  padding: 50px 30px;
+  background-color: #f2f2f2a6;
+  padding: 70px 40px;
   text-align: left;
   border-radius: 12px;
   margin-bottom: 30px;
-  
-  @include lg {
-    width: 600px;
-
-  }
+  height: max-content;
+  max-width: 90vw;
 
   button {
     max-width: 320px;

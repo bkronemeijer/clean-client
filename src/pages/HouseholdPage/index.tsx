@@ -14,32 +14,32 @@ export default function HouseholdPage() {
   const users = household.users
 
   useEffect(() => {
-    console.log(householdId)
-    // setTimeout(function() {dispatch(fetchHouseholdWithUsers(householdId))}, 2000)
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
 
   return (
-    <div className="page-content household-page">
-      {
-        household && users ? 
-          <div>
-            <h1>{household.nickName}</h1>
+    <div className="household-page household-background3">
+      <div className="page-content">
+        {
+          household && users ? 
+            <div>
+              <h1>{household.nickName}</h1>
 
-            <table>
-              <tbody>
-                {users.map((user: User) => {
-                  return (
-                    <UserRow key={user.id} info={user} />
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        :
+              <table>
+                <tbody>
+                  {users.map((user: User) => {
+                    return (
+                      <UserRow key={user.id} info={user} />
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          :
 
-        <Loading />
-      }
+          <Loading />
+        }
+      </div>
     </div>
   )
 }

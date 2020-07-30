@@ -1,4 +1,4 @@
-.household-page {
+.mytask-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,11 +6,5 @@
 
   @include lg {
     margin-top: 30px;
-  }
-
-  td {
-    font-size: 18px;
-    padding: 10px;
-    text-align: left;
   }
 }

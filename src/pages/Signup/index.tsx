@@ -3,6 +3,7 @@ import Select, {ValueType} from 'react-select';
 import { useDispatch } from 'react-redux'
 import { signup } from '../../store/user/actions'
 import { useHistory } from 'react-router-dom'
+import { setMessage } from '../../store/appState/actions';
 
 type Option = {
   value: string;
@@ -21,7 +22,6 @@ export default function Signup() {
   const [householdName, setHouseholdName] = useState<string>("")
   const [startDate, setstartDate] = useState<string>("")
   const [recurrence, setRecurrence] = useState<string>("weekly")
-  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const submitHandler = (e: any) => {
     e.preventDefault()
@@ -30,7 +30,7 @@ export default function Signup() {
     if (password === repeatPassword) {
       dispatch(signup(name, email, password, action, householdName, startDate, recurrence))
     } else {
-      setErrorMessage("Passwords do not match")
+      dispatch(setMessage("danger", true, "Passwords do not match"))
     }
     history.push("/settings")
   }
@@ -70,17 +70,16 @@ export default function Signup() {
                   value: 'join',
                   label: 'Join a household'
                 }
-              ]} onChange={(e: ValueType<Option>) => setAction(e.value)} styles={{
+              ]} onChange={(e: ValueType<Option>) => {
+                //@ts-ignore
+                setAction(e.value)
+              }} styles={{
                 container: base => ({
                   ...base,
                   flex: 1,
                 })
               }}/>
 
-          {/* <select required value={action} onChange={e => setAction(e.target.value)}>
-            <option value="create">Create a household</option>
-            <option value="join">Join a household</option>
-          </select> */}
         </div>
         <div className="login-field">
           <label htmlFor="household-name">Household name</label>
@@ -105,26 +104,21 @@ export default function Signup() {
                   value: 'biweekly',
                   label: 'Biweekly'
                 }
-              ]} onChange={(e: ValueType<Option>) => setRecurrence(e.value)} styles={{
+              ]} onChange={(e: ValueType<Option>) => {
+                //@ts-ignore
+                setRecurrence(e.value)
+              }} styles={{
                 container: base => ({
                   ...base,
                   flex: 1
                 })
               }}/>
 
-
-              {/* <select required value={recurrence} onChange={e => setRecurrence(e.target.value)}>
-                <option value={'weekly'}>Weekly</option>
-                <option value={'biweekly'}>Biweekly</option>
-              </select> */}
             </div>
           </div>
           : <p></p>
         }
-        <div>
-          <p>{errorMessage}</p>
-          <button>Sign up</button>
-        </div>
+        <button>Sign up</button>
       </form>
     </div>
   )

@@ -1,25 +1,31 @@
 .signup-page {
-  width: 600px;
+  width: 80vw;
   background-color: #f2f2f2;
   padding: 50px 30px;
   text-align: left;
   border-radius: 12px;
+  
+  @include lg {
+    width: 600px;
+
+  }
 
   button {
     max-width: 320px;
+    align-self: center;
   }
-
 
   form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
 
     label {
-      display: flex;
-      justify-content: center;
+      // display: flex;
+      // justify-content: center;
       margin-right: 10px;
       width: 130px;
+      text-align: left;
 
       @include lg {
         justify-content: flex-start;
@@ -29,7 +35,7 @@
     .login-selector {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      // align-items: center;
       margin-bottom: 10px;
       width: 100%;
 
@@ -46,15 +52,16 @@
     .login-field {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      // align-items: center;
       margin-bottom: 10px;
       
       @include lg {
         flex-direction: row;
       }
       
-
+      
       input[type="text"], input[type="password"], input[type="email"] {
+        max-width: 70vw;
         padding: 6px 10px;
         border: 0;
         outline: none;

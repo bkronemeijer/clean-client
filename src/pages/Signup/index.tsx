@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+import Select, {ValueType} from 'react-select';
 import { useDispatch } from 'react-redux'
 import { signup } from '../../store/user/actions'
 import { useHistory } from 'react-router-dom'
+
+type Option = {
+  value: string;
+  label: string;
+}
 
 export default function Signup() {
   const dispatch = useDispatch()
@@ -54,10 +60,27 @@ export default function Signup() {
 
         <div className="login-selector">
           <label htmlFor="action">I want to</label>
-          <select required value={action} onChange={e => setAction(e.target.value)}>
+
+          <Select options={[
+                {
+                  value: 'create',
+                  label: 'Create a household'
+                },
+                {
+                  value: 'join',
+                  label: 'Join a household'
+                }
+              ]} onChange={(e: ValueType<Option>) => setAction(e.value)} styles={{
+                container: base => ({
+                  ...base,
+                  flex: 1,
+                })
+              }}/>
+
+          {/* <select required value={action} onChange={e => setAction(e.target.value)}>
             <option value="create">Create a household</option>
             <option value="join">Join a household</option>
-          </select>
+          </select> */}
         </div>
         <div className="login-field">
           <label htmlFor="household-name">Household name</label>
@@ -72,10 +95,28 @@ export default function Signup() {
             </div>
             <div className="login-selector">
               <label htmlFor="recurrence">Recurrence</label>
-              <select required value={recurrence} onChange={e => setRecurrence(e.target.value)}>
+
+              <Select options={[
+                {
+                  value: 'weekly',
+                  label: 'Weekly'
+                },
+                {
+                  value: 'biweekly',
+                  label: 'Biweekly'
+                }
+              ]} onChange={(e: ValueType<Option>) => setRecurrence(e.value)} styles={{
+                container: base => ({
+                  ...base,
+                  flex: 1
+                })
+              }}/>
+
+
+              {/* <select required value={recurrence} onChange={e => setRecurrence(e.target.value)}>
                 <option value={'weekly'}>Weekly</option>
                 <option value={'biweekly'}>Biweekly</option>
-              </select>
+              </select> */}
             </div>
           </div>
           : <p></p>

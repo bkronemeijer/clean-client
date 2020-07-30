@@ -17,7 +17,7 @@ export default function Login() {
   }
 
   return (
-    <div className="page-content login-page">
+  <div className="login-page">
       <h1>Login</h1>
       <form onSubmit={e => submitHandler(e)}>
         <div className="login-field">

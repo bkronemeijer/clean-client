@@ -8,16 +8,18 @@
   }
   
   h1 {
-    padding: $margin-mobile;
     font-family: "sfproroundedbold";
     font-size: 34px;
     // color: $color-dark-teal;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: center;
     
     @include lg {
-      padding: $margin-desktop;
-      font-size: 52px;
+      font-size: 40px;
     }
   }
+
 
   h2 {
     font-family: "sfproroundedmedium";
@@ -27,6 +29,19 @@
     @include lg {
       font-size: 30px;
     }
+  }
+
+  button {
+    // background: $color-green-gradient;
+    background-color: #7ac769;
+    color: white;
+    font-family: "sfproroundedmedium";
+    font-size: 18px;
+    border-radius: 12px;
+    padding: 8px 36px;
+    width: 100%;
+    border: 0;
+    margin-top: 20px;
   }
 
 }

@@ -18,7 +18,7 @@ export default function Signup() {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [repeatPassword, setRepeatPassword] = useState<string>("")
-  const [action, setAction] = useState<string>("create")
+  const [action, setAction] = useState<string>("")
   const [householdName, setHouseholdName] = useState<string>("")
   const [startDate, setstartDate] = useState<string>("")
   const [recurrence, setRecurrence] = useState<string>("weekly")
@@ -85,42 +85,51 @@ export default function Signup() {
               }}/>
 
         </div>
-        <div className="login-field">
-          <label htmlFor="household-name">Household name</label>
-          <input required id="household-name" type="text" value={householdName} onChange={e => setHouseholdName(e.target.value)} />
-        </div>
         {
-          action === "create" ?
-          <div className="household-form-fields">
+          action ?
+
+          <div>
             <div className="login-field">
-              <label htmlFor="start-date">Start date</label>
-              <input required id="start-date" type="date" value={startDate} onChange={e => setstartDate(e.target.value)} />
+              <label htmlFor="household-name">Household name</label>
+              <input required id="household-name" type="text" value={householdName} onChange={e => setHouseholdName(e.target.value)} />
             </div>
-            <div className="login-selector">
-              <label htmlFor="recurrence">Recurrence</label>
+            {
+              action === "create" ?
+              <div className="household-form-fields">
+                <div className="login-field">
+                  <label htmlFor="start-date">Start date</label>
+                  <input required id="start-date" type="date" value={startDate} onChange={e => setstartDate(e.target.value)} />
+                </div>
+                <div className="login-selector">
+                  <label htmlFor="recurrence">Recurrence</label>
+    
+                  <Select options={[
+                    {
+                      value: 'weekly',
+                      label: 'Weekly'
+                    },
+                    {
+                      value: 'biweekly',
+                      label: 'Biweekly'
+                    }
+                  ]} onChange={(e: ValueType<Option>) => {
+                    //@ts-ignore
+                    setRecurrence(e.value)
+                  }} styles={{
+                    container: base => ({
+                      ...base,
+                      flex: 1
+                    })
+                  }}/>
+    
+                </div>
+              </div>
+              : <p></p>
+            }
 
-              <Select options={[
-                {
-                  value: 'weekly',
-                  label: 'Weekly'
-                },
-                {
-                  value: 'biweekly',
-                  label: 'Biweekly'
-                }
-              ]} onChange={(e: ValueType<Option>) => {
-                //@ts-ignore
-                setRecurrence(e.value)
-              }} styles={{
-                container: base => ({
-                  ...base,
-                  flex: 1
-                })
-              }}/>
-
-            </div>
           </div>
-          : <p></p>
+          :
+          <p></p>
         }
         <button>Sign up</button>
       </form>

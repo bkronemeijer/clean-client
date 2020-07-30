@@ -5,7 +5,7 @@ import {
   Message,
   AppState
 } from '../../Types/model'
-import { UserInStore } from './reducerTypes'
+import { UserInStore, TaskInStore } from './reducerTypes'
 
 // USER ACTION TYPES
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
@@ -18,6 +18,7 @@ export const HOUSEHOLD_USERS_FETCHED = "HOUSEHOLD_USERS_FETCHED"
 
 // TASK ACTION TYPES
 export const TASKS_FETCHED = "TASKS_FETCHED"
+export const CURRENT_TASK_FETCHED = "CURRENT_TASK_FETCHED"
 
 // APPSTATE ACTION TYPES
 export const APP_LOADING = "APP_LOADING"
@@ -29,7 +30,7 @@ export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 export type StoreState = {
   user: UserInStore,
   household: Household,
-  task: Task,
+  task: TaskInStore,
   appState: AppState
 }
 
@@ -75,6 +76,11 @@ export type fetchHouseholdWithUser = {
 export type fetchTask = {
   type: typeof TASKS_FETCHED
   payload: Task[]
+}
+
+export type fetchCurrentTaskType = {
+  type: typeof CURRENT_TASK_FETCHED
+  payload: Task
 }
 
 export type TaskActionTypes = any

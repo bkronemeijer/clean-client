@@ -4,7 +4,8 @@ const initialState = {
   token: localStorage.getItem("token"),
   loginSucces: null,
   name: null,
-  email: null
+  email: null,
+  householdId: null
 };
 
 export default (state = initialState, action: any) => {
@@ -15,7 +16,8 @@ export default (state = initialState, action: any) => {
         ...state,
         loginSucces: true,
         name: action.payload.name,
-        email: action.payload.email
+        email: action.payload.email,
+        householdId: action.payload.householdId
       }
     
     case LOGIN_FAIL: 

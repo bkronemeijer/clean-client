@@ -19,31 +19,33 @@ export default function TaskPage() {
   }, [dispatch, householdId])
 
   return (
-    <div className="page-content task-page">
-      {
-        tasks ? 
-          tasks.length !== 0 ?
-            <div>
-              <h1>Household tasks</h1>
-              <div className="task-card-container">
-                {
-                  tasks.map((task: Task) => {
-                    return (
-                      <TaskCard key={task.id} task={task}/>
-                    )
-                  })
-                }
+    <div className="household-background2 task-page">
+      <div className="page-content">
+        {
+          tasks ? 
+            tasks.length !== 0 ?
+              <div>
+                <h1>Household tasks</h1>
+                <div className="task-card-container">
+                  {
+                    tasks.map((task: Task) => {
+                      return (
+                        <TaskCard key={task.id} task={task}/>
+                      )
+                    })
+                  }
+                </div>
               </div>
-            </div>
+            :
+              <div>
+                <h1>Oops</h1>
+                <p>Your household has no tasks yet</p>
+              </div>
           :
-            <div>
-              <h1>Oops</h1>
-              <p>Your household has no tasks yet</p>
-            </div>
-        :
 
-        <Loading />
-      }
+          <Loading />
+        }
+      </div>
     </div>
   )
 }

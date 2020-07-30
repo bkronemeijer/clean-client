@@ -1,50 +1,47 @@
 .login-page {
+  width: 300px;
+  height: 400px;
+  padding: 50px 30px;
+  text-align: left;
+  border-radius: 12px;
+
+  background-color: #f2f2f2a6;
+  border-radius: 12px;
+
+  @include lg {
+    margin-top: 120px;
+    opacity: 1;
+  }
+
   form {
-    display: flex;
-    flex-direction: column;
-
-    @include lg {
-      align-items: last baseline;
-    }
-
-    .login-footer{
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-    }
-
-    .login-container {
-      display: flex;
-      flex-direction: column;
-
-      .login-warning {
-        color: red;
-        font-size: 14px;
-        padding: 0;
-        margin: 0;
-        text-align: right;
-      }
-    }
-    
-    .login-field {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 10px;
-
-      
-      @include lg {
-        flex-direction: row;
-        justify-content: space-between;
-      }
+    .login-field{
+      margin-bottom: 10px;
 
       input {
-        max-width: 80vw;
+        width: 100%;
       }
       
       label {
         margin-right: 10px;
+        font-weight: 400;
       }
+
+      input[type="text"], input[type="password"], input[type="email"] {
+        max-width: 70vw;
+        padding: 6px 10px;
+        border: 0;
+        outline: none;
+        border-radius: 4px;
+        transition: all 0.3s ease; 
+    
+        &:focus {
+          box-shadow: 0 0 0 2px blue;
+        }
+      }
+    }
+
+    .login-footer {
+      text-align: center;
     }
   }
 }

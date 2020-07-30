@@ -2,6 +2,11 @@
   a {
       font-size: 17px;
       margin: 4px 10px;
+      margin-top: 20px;
+
+      @include lg {
+        margin-top: 0;
+      }
     }
   
     #nav-dropdown {
@@ -9,9 +14,16 @@
       justify-content: flex-end;
       align-items: center;
   
-      a{
+      a {
         margin: 0;
+        padding-top: 10px;
       }
+    }
+
+    button {
+      background-color: white;
+      width: auto;
+      margin-top: 10px;
     }
   
     .dropdown-menu {
@@ -23,7 +35,8 @@
       width: auto !important;
   
       &.active, &.focus, &:target {
-        background-color: #89e675 !important;
+        // background-color: #89e675 !important;
+        background: $color-green-gradient !important;
         border-radius: 3px;
       }
       

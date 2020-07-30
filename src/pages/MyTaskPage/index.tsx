@@ -34,58 +34,61 @@ export default function MyTaskPage() {
   }
 
   return (
-    <div className="page-content">
-      {
-        currentTask ?
-        <div>
-          <h1>My task</h1>
-          {
-            currentTask.length === 0 ? 
-              <p>You have no current task!</p>
-            :
-              <div>
-                <p>To do this week: {currentTask.task.title}</p>
-                <p>Deadline: {moment(currentTask.deadline).format('dddd')}</p>
+    <div className="household-background mytask-page">
 
-                {
-                  currentTask.isDone ?
-                    <p>Congratulations! You have finished your task</p>
+      <div className="page-content">
+        {
+          currentTask ?
+          <div>
+            <h1>My task</h1>
+            {
+              currentTask.length === 0 ? 
+                <p>You have no current task!</p>
+              :
+                <div>
+                  <p>To do this week: {currentTask.task.title}</p>
+                  <p>Deadline: {moment(currentTask.deadline).format('dddd')}</p>
 
-                  :
+                  {
+                    currentTask.isDone ?
+                      <p>Congratulations! You have finished your task</p>
 
-                    <div>
-                      <p>You are not yet done with your task</p>
-                      {
-                        toggleButton ?
-                        <div>
-                          <h2>I finished my task!</h2>
+                    :
 
-                          <form onSubmit={e => submitHandler(e)}>
-                            <div className="login-container">
-                              <div className="login-field">
-                                <label htmlFor="notes">Notes</label>
-                                <input id="notes" type="text" value={notes} onChange={e => setNotes(e.target.value)} />
+                      <div>
+                        <p>You are not yet done with your task</p>
+                        {
+                          toggleButton ?
+                          <div>
+                            <h2>I finished my task!</h2>
+
+                            <form onSubmit={e => submitHandler(e)}>
+                              <div className="login-container">
+                                <div className="login-field">
+                                  <label htmlFor="notes">Notes</label>
+                                  <input id="notes" type="text" value={notes} onChange={e => setNotes(e.target.value)} />
+                                </div>
                               </div>
-                            </div>
-                            <div className="login-footer">
-                              <button>Submit</button>
-                            </div>
-                          </form>
-                          
-                        </div>
-                        :
-                          <button onClick={() => setToggleButton(!toggleButton)}>I am done with my task!</button>
-                      }
-                    </div>
-                }
-              </div>
-          }
-        </div>
+                              <div className="login-footer">
+                                <button>Submit</button>
+                              </div>
+                            </form>
+                            
+                          </div>
+                          :
+                            <button onClick={() => setToggleButton(!toggleButton)}>I am done with my task!</button>
+                        }
+                      </div>
+                  }
+                </div>
+            }
+          </div>
 
-        :
+          :
 
-        <Loading />
-      }
+          <Loading />
+        }
+      </div>
     </div>
   )
 }

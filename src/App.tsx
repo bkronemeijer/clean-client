@@ -31,6 +31,7 @@ function App() {
       <Navigation userName={user}/>
       <MessageBox />
       {isLoading ? <Loading /> : null}
+      {/* <Loading /> */}
       <div className="App-content">
         <Switch>
           <Route exact path="/" component={HomePage}/>

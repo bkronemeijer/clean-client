@@ -16,6 +16,7 @@ import { selectLoggedInName } from './store/user/selectors';
 import MessageBox from './components/MessageBox';
 import { selectAppLoading } from './store/appState/selectors';
 import Loading from './components/Loading';
+import AdminSettings from './pages/AdminSettings';
 
 function App() {
   const dispatch = useDispatch()
@@ -41,6 +42,7 @@ function App() {
           <Route path="/signup" component={Signup}/>
           <Route path="/login" component={Login}/>
           <Route path="/settings" component={Settings}/>
+          <Route path="/admin-settings" component={AdminSettings}/>
         </Switch>
       </div>
     </div>

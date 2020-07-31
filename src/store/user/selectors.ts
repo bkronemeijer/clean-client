@@ -12,6 +12,11 @@ export const selectLoggedInName = (reduxState: StoreState) => {
   return reduxState.user.name
 }
 
+export const selectUserIsAdmin = (reduxState: StoreState) => {
+  return reduxState.user.isAdmin
+}
+
+
 export const selectLoggedInUserId = (reduxState: StoreState) => {
   return reduxState.user.id
 }

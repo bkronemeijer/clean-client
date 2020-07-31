@@ -135,7 +135,7 @@ export function signup (name: string, email: string, password: string, action: s
 
 export const getUserWithStoredToken = () => {
   return async function thunk(dispatch: Dispatch, getState: GetState) {
-    // get token from the state
+    // get token from the storage
     const token = localStorage.getItem("token")
 
     // if we have no token, stop
@@ -162,6 +162,32 @@ export const getUserWithStoredToken = () => {
       // get rid of the token by logging out
       dispatch(logOut());
       // dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const updateUserSettings = (userId: number, name: string | undefined, wantsMail: boolean) => {
+  return async function thunk(dispatch: Dispatch, getState: GetState) {
+    const token = localStorage.getItem("token")
+    console.log(userId, name, wantsMail)
+
+    try {
+      const response = await axios.patch(`${apiUrl}/user`, {
+        id: userId,
+        name,
+        wantsMail
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      console.log(response.data)
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.message);
+      } else {
+        console.log(error);
+      }
+      dispatch(logOut());
     }
   };
 };

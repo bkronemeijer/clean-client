@@ -17,6 +17,8 @@ export default function HouseholdPage() {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
 
+  console.log(household)
+
   return (
     <div className="household-page household-background3">
       <div className="page-content">
@@ -26,10 +28,17 @@ export default function HouseholdPage() {
               <h1>{household.nickName}</h1>
 
               <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>V</th>
+                    <th>X</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {users.map((user: User) => {
                     return (
-                      <UserRow key={user.id} info={user} />
+                      <UserRow key={user.id} info={user} recurrence={household.recurrence} />
                     )
                   })}
                 </tbody>

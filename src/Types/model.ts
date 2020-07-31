@@ -5,6 +5,8 @@ export type User = {
   password: string
   isAdmin: boolean
   householdId: number
+  successes: number
+  fails: number
 }
 
 export type Household = {

@@ -59,6 +59,8 @@ export function fetchCurrentTask (userId: number, recurrence: number) {
           Authorization: `Bearer ${token}`
         }
       })
+
+      console.log(response.data)
       
       if (response.status >= 200 || response.status < 300) {
         dispatch(currentTaskFetched(response.data))
@@ -66,10 +68,10 @@ export function fetchCurrentTask (userId: number, recurrence: number) {
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
+        // dispatch(setMessage("danger", true, error.response.data.message));
       } else {
         console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
+        // dispatch(setMessage("danger", true, error.message));
       }
     }
   }

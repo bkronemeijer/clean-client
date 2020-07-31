@@ -6,17 +6,22 @@ import { selectTasks } from '../../store/task/selectors'
 import { Task } from '../../Types/model'
 import TaskCard from '../../components/TaskCard'
 import Loading from '../../components/Loading'
+import { selectHouseholdWithUsers } from '../../store/household/selectors'
+import { fetchHouseholdWithUsers } from '../../store/household/actions'
 
 export default function TaskPage() {
   const dispatch = useDispatch()
   const householdId = useSelector(selectUserHouseholdId)
+  const household = useSelector(selectHouseholdWithUsers)
   const tasks = useSelector(selectTasks)
 
   useEffect(() => {
-    if (householdId){
-      dispatch(fetchTasks(householdId))
-    }
+    dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
+
+  useEffect(() => {
+    dispatch(fetchTasks(householdId, household.recurrence))
+  }, [dispatch, householdId, household])
 
   return (
     <div className="household-background2 task-page">

@@ -23,22 +23,38 @@ export const currentTaskFetched = (currentTask: Task): fetchCurrentTaskType => (
 
 
 
-export function fetchTasks (householdId: number) {
+export function fetchTasks (householdId: number, recurrence: number) {
   return async function thunk (dispatch: Dispatch, getState: GetState) {
+    if (!householdId || !recurrence) {
+      return
+    }
+
     const fetchUrl = `${apiUrl}/task`
     const token = localStorage.getItem("token")
 
-    const response = await axios.post(fetchUrl, {
-      id: 1
-    }, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    try {
+      const response = await axios.post(fetchUrl, {
+        householdId,
+        recurrence
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+  
+      if (response.status >= 200 || response.status < 300) {
+        dispatch(tasksFetched(response.data))
       }
-    })
-
-    if (response.status >= 200 || response.status < 300) {
-      dispatch(tasksFetched(response.data))
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        // dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        // dispatch(setMessage("danger", true, error.message));
+      }
     }
+
   }
 }
 

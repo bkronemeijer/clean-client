@@ -17,8 +17,6 @@ export default function HouseholdPage() {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
 
-  console.log(household)
-
   return (
     <div className="household-page household-background3">
       <div className="page-content">

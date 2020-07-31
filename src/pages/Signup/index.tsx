@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Select, {ValueType} from 'react-select';
+import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../store/user/actions'
 import { useHistory } from 'react-router-dom'
@@ -27,9 +28,9 @@ export default function Signup() {
     
     e.preventDefault()
     console.log(name, email, password, action, householdName, startDate, recurrence)
-
+    const startDay = moment(startDate).day() 
     if (password === repeatPassword) {
-      dispatch(signup(name, email, password, action, householdName, startDate, recurrence))
+      dispatch(signup(name, email, password, action, householdName, startDay, recurrence))
     } else {
       dispatch(setMessage("danger", true, "Passwords do not match"))
     }

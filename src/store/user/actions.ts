@@ -73,7 +73,7 @@ export function login (email: string, password: string) {
   }
 }
 
-export function signup (name: string, email: string, password: string, action: string, householdName: string, startDate: string, recurrence: string | number) {
+export function signup (name: string, email: string, password: string, action: string, householdName: string, startDate: number, recurrence: string | number) {
   return async function thunk(dispatch: Dispatch, getState: GetState){
     dispatch(appLoading())
     const postUrl = `${apiUrl}/signup`

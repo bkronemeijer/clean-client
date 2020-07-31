@@ -12,8 +12,8 @@ export default function LoggedIn() {
   const name = useSelector(selectLoggedInName)
 
   const logOutHandler = () => {
-    dispatch(logOut())
     history.push("/login")
+    dispatch(logOut())
   }
 
   return (

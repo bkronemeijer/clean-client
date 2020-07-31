@@ -15,6 +15,7 @@ export default (state = initialState, action: any) => {
       return {
         ...state,
         loginSucces: true,
+        id: action.payload.id,
         name: action.payload.name,
         email: action.payload.email,
         householdId: action.payload.householdId

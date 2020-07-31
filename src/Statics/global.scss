@@ -62,3 +62,18 @@
     background-position: center;
   }
 }
+
+.settings-background {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
+  background-image: url(./assets/Whiteboard.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  object-fit: cover;
+
+  @include lg {
+    background-position: center;
+  }
+}

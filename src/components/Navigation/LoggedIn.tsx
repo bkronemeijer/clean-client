@@ -21,6 +21,7 @@ export default function LoggedIn() {
       <div className="nav-items-left">
         <Nav.Link as={NavLink} to="/household" >Household</Nav.Link>
         <Nav.Link as={NavLink} to="/tasks" >Tasks</Nav.Link>
+        <Nav.Link as={NavLink} to="/my-task" >My task</Nav.Link>
       </div>
       <NavDropdown title={`Logged in as ${name}`} id="nav-dropdown">
         <NavDropdown.Item as={NavLink} to="/settings" className="nav-dropdown-settings">Settings</NavDropdown.Item>

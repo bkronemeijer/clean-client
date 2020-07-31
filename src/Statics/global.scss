@@ -3,16 +3,62 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
-  width: 70vw;
-  background-color: lightgrey;
+  max-width: 90vw;
+  background-color: #f2f2f2a6;
+  box-shadow: 0px 2px 21px 3px #aca7a7e6;
+  border-radius: 12px;
+  padding: 30px;
+  opacity: 1;
+
+  @include lg {
+    margin-top: 120px;
+    width: 500px;
+    background-color: #f2f2f2a6;
+    border-radius: 12px;
+    padding: 30px;
+    opacity: 1;
+  }
+}
+
+.household-background {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
+  background-image: url(./assets/Home.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  object-fit: cover;
+
+  @include lg {
+    background-position: center;
+  }
+}
+
+.household-background2 {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
+  background-image: url(./assets/Home2.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  object-fit: cover;
   
-  button {
-    background-color: $color-bright-green;
-    color: white;
-    font-family: "sfproroundedmedium";
-    border-radius: 4px;
-    padding: 2px 10px;
-    margin: 10px;
+  @include lg {
+    background-position: center;
+  }
+}
+
+.household-background3 {
+  height: 80vh;
+  width: 100vw;
+  background-image: url(./assets/geheel.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  object-fit: cover;
+
+  @include lg {
+    background-position: center;
   }
 }

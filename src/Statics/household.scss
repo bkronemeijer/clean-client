@@ -1,7 +1,50 @@
 .household-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  @include lg {
+    margin-top: 30px;
+  }
+
   td {
     font-size: 18px;
     padding: 10px;
     text-align: left;
+  }
+
+  // tr {
+  //   background-color: salmon;
+  //   margin: 5px;
+  // }
+
+  table {
+    table-layout: fixed;
+  }
+
+  tr {
+    border-bottom: 1px solid grey;
+  }
+
+  td:nth-child(1) {
+    width: 300px;
+    overflow: hidden;
+  }
+  td:nth-child(2) { 
+    background-color: $color-soft-green;
+    border-radius: 4px;
+    text-align: right;
+    width: 50px;
+    padding: 10px;
+    opacity: 0.8;
+  }
+  td:nth-child(3) { 
+    background-color: salmon;
+    border-radius: 4px;
+    text-align: right;
+    padding: 10px;
+    width: 50px;
+    opacity: 0.8;
   }
 }

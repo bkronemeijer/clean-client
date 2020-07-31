@@ -1,8 +1,8 @@
+@import './fonts.scss';
 @import './vars.scss';
 @import './mixins.scss';
 @import './App.scss';
 @import './resets.scss';
-@import './fonts.scss';
 @import './global.scss';
 
 // page styling
@@ -10,6 +10,7 @@
 @import './login.scss';
 @import './signup.scss';
 @import './task.scss';
+@import './mytask.scss';
 
 // component styling
 @import './navigation.scss';

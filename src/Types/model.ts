@@ -5,6 +5,8 @@ export type User = {
   password: string
   isAdmin: boolean
   householdId: number
+  successes: number
+  fails: number
 }
 
 export type Household = {
@@ -29,7 +31,20 @@ export type Task = {
   householdId: number
   userId: number
   length: number
-  map: any
+  taskSchedule: {
+    isDone: boolean
+    user: User
+  }
+}
+
+export type CurrentTask = {
+  id: number
+  deadline: Date
+  isDone: boolean
+  task: Task
+  userId: number
+  taskId: number
+  length: number
 }
 
 export type Message = {

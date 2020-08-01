@@ -16,6 +16,8 @@ export default function MyTaskPage() {
   const currentTask = useSelector(selectCurrentTask)
   const [toggleButton, setToggleButton] = useState<boolean>(false)
   const [notes, setNotes] = useState<string>("")
+
+  console.log(currentTask)
   
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))

@@ -14,6 +14,12 @@ export default (state = initialState, action: any) => {
       }
 
     case CURRENT_TASK_FETCHED:
+      if (action.payload.length === 0) {
+        return {
+          ...state,
+          currentTask: []
+        }
+      }
       return {
         ...state,
         currentTask: action.payload[0]

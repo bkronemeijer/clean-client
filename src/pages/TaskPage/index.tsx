@@ -15,6 +15,12 @@ export default function TaskPage() {
   const household = useSelector(selectHouseholdWithUsers)
   const tasks = useSelector(selectTasks)
 
+  if (tasks) {
+    //@ts-ignore
+    tasks.forEach(task => console.log(task.taskSchedules))
+  }
+    
+
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])

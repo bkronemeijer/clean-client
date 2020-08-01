@@ -31,10 +31,12 @@ export type Task = {
   householdId: number
   userId: number
   length: number
-  taskSchedule: {
-    isDone: boolean
-    user: User
-  }
+  taskSchedules: TaskSchedules[]
+}
+
+export type TaskSchedules = {
+  isDone: boolean
+  user: User
 }
 
 export type CurrentTask = {

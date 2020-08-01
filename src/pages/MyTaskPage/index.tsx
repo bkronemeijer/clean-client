@@ -31,7 +31,7 @@ export default function MyTaskPage() {
   
   const submitHandler = (e: any) => {
     e.preventDefault()
-    dispatch(updateCurrentTask(currentTask.id))
+    dispatch(updateCurrentTask(currentTask.id, userId, household.recurrence))
     console.log('task done')
   }
 

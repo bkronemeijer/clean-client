@@ -93,7 +93,7 @@ export function fetchCurrentTask (userId: number, recurrence: number) {
   }
 }
 
-export function updateCurrentTask (myTaskId: number) {
+export function updateCurrentTask (myTaskId: number, userId: number, recurrence: number) {
   return async function thunk (dispatch: Dispatch, getState: GetState) {
     if (!myTaskId) {
       return
@@ -111,7 +111,9 @@ export function updateCurrentTask (myTaskId: number) {
       })
       
       if (response.status >= 200 || response.status < 300) {
-        dispatch(currentTaskFetched(response.data))
+        dispatch(
+          //@ts-ignore
+          fetchCurrentTask(userId, recurrence))
       }
     } catch (error) {
       if (error.response) {

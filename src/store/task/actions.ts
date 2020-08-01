@@ -126,3 +126,38 @@ export function updateCurrentTask (myTaskId: number, userId: number, recurrence:
     }
   }
 }
+
+export function deleteTask (taskId: number) {
+  return async function thunk (dispatch: Dispatch, getState: GetState) {
+    if (!taskId) {
+      return
+    }
+    const deleteUrl = `${apiUrl}/task/delete`
+    const token = localStorage.getItem("token")
+
+    try {
+      const response = await axios.post(deleteUrl, {
+        taskId
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      console.log(response.data)
+      
+      if (response.status >= 200 || response.status < 300) {
+        // dispatch(currentTaskFetched(response.data))
+        console.log(response.data)
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        // dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        // dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  }
+}

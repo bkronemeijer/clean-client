@@ -29,7 +29,7 @@ export default function AdminSettings() {
 
 
   return (
-    <div className="settings-background ">
+    <div className="settings-background admin-settings-page">
       <div className="settings">
         <h1>Admin panel</h1>
         {tasks && household ?

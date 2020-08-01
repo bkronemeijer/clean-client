@@ -9,7 +9,7 @@
   border-radius: 12px;
 
   @include lg {
-    margin-top: 120px;
+    margin-top: 60px;
     opacity: 1;
   }
 
@@ -53,6 +53,32 @@
       width: 16px;
       height: 16px;
       margin-bottom: 7px;
+    }
+  }
+}
+
+.admin-settings-page {
+  margin-top: 0 !important;
+
+  .admin-settings {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    border-radius: 16px;
+    background-color: $color-soft-green;
+  
+    padding: 5px 15px;
+    margin: 5px;
+
+    button {
+      width: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
     }
   }
 }

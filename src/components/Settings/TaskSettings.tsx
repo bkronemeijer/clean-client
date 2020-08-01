@@ -7,8 +7,9 @@ type Props = {
 
 export default function TaskSettings(props: Props) {
   return (
-    <div>
-      {props.task.title}
+    <div className="admin-settings">
+      <p>{props.task.title}</p>
+      <button>X</button>
     </div>
   )
 }

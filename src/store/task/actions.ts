@@ -127,7 +127,7 @@ export function updateCurrentTask (myTaskId: number, userId: number, recurrence:
   }
 }
 
-export function deleteTask (taskId: number) {
+export function deleteTask (taskId: number, userId: number, recurrence: number) {
   return async function thunk (dispatch: Dispatch, getState: GetState) {
     if (!taskId) {
       return
@@ -147,7 +147,9 @@ export function deleteTask (taskId: number) {
       console.log(response.data)
       
       if (response.status >= 200 || response.status < 300) {
-        // dispatch(currentTaskFetched(response.data))
+        dispatch(
+          //@ts-ignore
+          fetchTasks(userId, recurrence))
         console.log(response.data)
       }
     } catch (error) {

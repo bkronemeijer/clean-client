@@ -10,6 +10,7 @@ import {
   loginFailed
 } from '../StoreTypes/actionTypes'
 import { showMessageWithTimeout, setMessage, appLoading, appDoneLoading } from '../appState/actions'
+import { fetchHouseholdWithUsers } from '../household/actions'
 
 export const userLoggedIn = (userWithToken: User): userLogin => {
   return {
@@ -191,3 +192,40 @@ export const updateUserSettings = (userId: number, name: string | undefined, wan
     }
   };
 };
+
+export function deleteUser (userId: number, householdId: number) {
+  return async function thunk (dispatch: Dispatch, getState: GetState) {
+    if (!userId) {
+      return
+    }
+    const deleteUrl = `${apiUrl}/user/delete`
+    const token = localStorage.getItem("token")
+
+    try {
+      const response = await axios.post(deleteUrl, {
+        userId
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      console.log(response.data)
+      
+      if (response.status >= 200 || response.status < 300) {
+        dispatch(
+          //@ts-ignore
+          fetchHouseholdWithUsers(householdId))
+        console.log(response.data)
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        // dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        // dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  }
+}

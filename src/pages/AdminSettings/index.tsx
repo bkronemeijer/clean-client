@@ -37,7 +37,7 @@ export default function AdminSettings() {
             <h2>Tasks</h2>
             {tasks.map((task: Task) => {
               return (
-                <TaskSettings key={task.id} task={task} />
+                <TaskSettings key={task.id} task={task} household={household}/>
               )
             })}
 

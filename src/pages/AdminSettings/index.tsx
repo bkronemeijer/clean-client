@@ -36,23 +36,29 @@ export default function AdminSettings() {
         <h1>Admin panel</h1>
         {tasks && household ?
           <div>
-            <h2>Tasks</h2>
-            {tasks.map((task: Task) => {
-              return (
-                <TaskSettings key={task.id} task={task} household={household}/>
-              )
-            })}
-            <AddNewTask household={household} tasks={tasks}/>
+            <details>
+              <summary>Tasks</summary>
+              {tasks.map((task: Task) => {
+                return (
+                  <TaskSettings key={task.id} task={task} household={household}/>
+                )
+              })}
+              <AddNewTask household={household} tasks={tasks}/>
+            </details>
+            
+            <details>
+              <summary>Members</summary>
+              {household.users.map((user: User) => {
+                return (
+                  <MemberSettings key={user.id} user={user}/>
+                )
+              })}
+            </details>
 
-            <h2>Members</h2>
-            {household.users.map((user: User) => {
-              return (
-                <MemberSettings key={user.id} user={user}/>
-              )
-            })}
-
-            <h2>Household settings</h2>
-            <HouseholdSettings household={household}/>
+            <details>
+              <summary>Household settings</summary>
+              <HouseholdSettings household={household}/>
+            </details>
             
           </div>
 

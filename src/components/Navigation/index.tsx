@@ -11,7 +11,7 @@ export default function Navigation(props: {userName: string}) {
 
   return (
     <Navbar bg="white" expand="sm" className="navigation">
-      <Navbar.Brand as={NavLink} to="/">
+      <Navbar.Brand as={NavLink} to={token ? "/household" : "/login"}>
         <img src={logo} alt='Logo'/>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

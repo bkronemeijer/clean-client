@@ -56,9 +56,7 @@ export function login (email: string, password: string) {
           //@ts-ignore
           showMessageWithTimeout("success", false, "Welcome back!", 1500)
         )
-      } else {
-        console.log("not a success")
-      }
+      } 
       dispatch(appDoneLoading())
 
     } catch (error) {
@@ -170,7 +168,6 @@ export const getUserWithStoredToken = () => {
 export const updateUserSettings = (userId: number, name: string | undefined, wantsMail: boolean) => {
   return async function thunk(dispatch: Dispatch, getState: GetState) {
     const token = localStorage.getItem("token")
-    console.log(userId, name, wantsMail)
 
     try {
       const response = await axios.patch(`${apiUrl}/user`, {

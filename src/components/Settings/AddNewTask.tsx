@@ -26,11 +26,9 @@ export default function AddNewTask(props: Props) {
   const addNewTask = (e: any) => {
     e.preventDefault()
     dispatch(addTask(userId, deadline, householdId, title, description, props.household.recurrence))
-    console.log(userId, description, title, householdId)
   }
 
   const emailOptions = props.household.users.map((user) => {
-    console.log(user.id)
     return ({
       value: user.id,
       label: user.name

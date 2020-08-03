@@ -19,8 +19,6 @@ export default function AdminSettings() {
   const household = useSelector(selectHouseholdWithUsers)
   const tasks = useSelector(selectTasks)
 
-  console.log("tsks", tasks)
-
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])

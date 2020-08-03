@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import Select, {ValueType} from 'react-select';
-import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../store/user/actions'
 import { useHistory } from 'react-router-dom'
 import { setMessage } from '../../store/appState/actions';
 
 type Option = {
-  value: string;
+  value: string | number;
   label: string;
 }
 
@@ -21,15 +20,14 @@ export default function Signup() {
   const [repeatPassword, setRepeatPassword] = useState<string>("")
   const [action, setAction] = useState<string>("")
   const [householdName, setHouseholdName] = useState<string>("")
-  const [startDate, setstartDate] = useState<string>("")
+  const [startDate, setStartDate] = useState<number>(1)
   const [recurrence, setRecurrence] = useState<string>("weekly")
 
   const submitHandler = (e: any) => {
     
     e.preventDefault()
-    const startDay = moment(startDate).day() 
     if (password === repeatPassword) {
-      dispatch(signup(name, email, password, action, householdName, startDay, recurrence))
+      dispatch(signup(name, email, password, action, householdName, startDate, recurrence))
     } else {
       dispatch(setMessage("danger", true, "Passwords do not match"))
     }
@@ -99,7 +97,44 @@ export default function Signup() {
                 <div className="household-form-fields">
                   <div className="login-field">
                     <label htmlFor="start-date">Start date</label>
-                    <input required id="start-date" type="date" value={startDate} onChange={e => setstartDate(e.target.value)} />
+                    <Select options={[
+                      {
+                        value: 1,
+                        label: 'Monday'
+                      },
+                      {
+                        value: 2,
+                        label: 'Tuesday'
+                      },
+                      {
+                        value: 3,
+                        label: 'Wednesday'
+                      },
+                      {
+                        value: 4,
+                        label: 'Thursday'
+                      },
+                      {
+                        value: 5,
+                        label: 'Friday'
+                      },
+                      {
+                        value: 6,
+                        label: 'Saturday'
+                      },
+                      {
+                        value: 7,
+                        label: 'Sunday'
+                      },
+                    ]} onChange={(e: ValueType<Option>) => {
+                      //@ts-ignore
+                      setStartDate(e.value)
+                    }} styles={{
+                      container: base => ({
+                        ...base,
+                        flex: 1
+                      })
+                    }}/>
                   </div>
                   <div className="login-selector">
                     <label htmlFor="recurrence">Recurrence</label>

@@ -50,7 +50,6 @@ export function fetchTasks (householdId: number) {
       })
   
       if (response.status >= 200 || response.status < 300) {
-        console.log(response.data, 'RESPONSE')
         dispatch(tasksFetched(response.data))
       }
     } catch (error) {
@@ -119,8 +118,6 @@ export function fetchCurrentTask (userId: number, recurrence: number) {
         }
       })
 
-      console.log(response.data)
-      
       if (response.status >= 200 || response.status < 300) {
         dispatch(currentTaskFetched(response.data))
       }
@@ -225,8 +222,6 @@ export function addTask (userId: number, deadline: any, householdId: number, tit
         }
       })
 
-      console.log(response.data)
-      
       if (response.status >= 200 || response.status < 300) {
         dispatch(
           //@ts-ignore

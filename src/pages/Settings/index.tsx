@@ -27,7 +27,6 @@ export default function Settings() {
   const submitHandler = (e: any) => {
     e.preventDefault()
     dispatch(updateUserSettings(userId, name, email))
-    console.log('save settings')
   }
 
   return (

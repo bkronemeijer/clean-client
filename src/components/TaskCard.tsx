@@ -24,8 +24,6 @@ export default function TaskCard(props: Props) {
   const name = capitalize(task.taskSchedules[0].user.name)
   const isDone = task.taskSchedules[0].isDone
 
-  console.log(task)
-
   return (
     <div className="task-card">
       <h2>{title}</h2>

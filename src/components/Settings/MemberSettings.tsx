@@ -14,7 +14,6 @@ export default function TaskSettings(props: Props) {
   const userId = useSelector(selectLoggedInUserId)
 
   const removeMember = (e: any) => {
-    console.log("removeMember", props.user.id, props.user.householdId)
     dispatch(deleteUser(props.user.id, props.user.householdId))
   }
 

@@ -81,8 +81,6 @@ export function updateHousehold (householdId: number, name: string, startDate: s
     } else if (startDate === "sunday") {
       startDate = 7
     }
-    console.log(name, recurrence, startDate)
-
     try {
       const response = await axios.patch(patchUrl, {
         id: householdId,
@@ -95,7 +93,6 @@ export function updateHousehold (householdId: number, name: string, startDate: s
         }
       })
 
-      console.log(response)
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);

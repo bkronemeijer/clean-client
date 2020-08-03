@@ -27,7 +27,6 @@ export default function Signup() {
   const submitHandler = (e: any) => {
     
     e.preventDefault()
-    console.log(name, email, password, action, householdName, startDate, recurrence)
     const startDay = moment(startDate).day() 
     if (password === repeatPassword) {
       dispatch(signup(name, email, password, action, householdName, startDay, recurrence))

@@ -16,7 +16,7 @@ export default function MyTaskPage() {
   const currentTask = useSelector(selectCurrentTask)
   const [toggleButton, setToggleButton] = useState<boolean>(false)
   const [notes, setNotes] = useState<string>("")
-  
+
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
@@ -29,8 +29,7 @@ export default function MyTaskPage() {
   
   const submitHandler = (e: any) => {
     e.preventDefault()
-    dispatch(updateCurrentTask(currentTask.id))
-    console.log('task done')
+    dispatch(updateCurrentTask(currentTask.id, userId, household.recurrence))
   }
 
   return (

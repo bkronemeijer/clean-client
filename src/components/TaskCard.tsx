@@ -21,8 +21,8 @@ export default function TaskCard(props: Props) {
   const {task} = props
   const title = capitalize(task.title)
   const desc = capitalize(task.description)
-  const name = capitalize(task.taskSchedule.user.name)
-  const isDone = task.taskSchedule.isDone
+  const name = capitalize(task.taskSchedules[0].user.name)
+  const isDone = task.taskSchedules[0].isDone
 
   console.log(task)
 
@@ -30,7 +30,7 @@ export default function TaskCard(props: Props) {
     <div className="task-card">
       <h2>{title}</h2>
       <p>{desc}</p>
-      <p>Currently assigned to: {name}</p> {/* TODO: fill in the user that needs to do this task */}
+      <p>Currently assigned to: {name}</p>
       {
         isDone ? 
           <p>Done</p>

@@ -4,6 +4,10 @@ export const selectTasks = (reduxState: StoreState) => {
   return reduxState.task.tasks
 }
 
+export const selectCurrentTasks = (reduxState: StoreState) => {
+  return reduxState.task.currentTasks
+}
+
 export const selectCurrentTask = (reduxState: StoreState) => {
   return reduxState.task.currentTask
 }

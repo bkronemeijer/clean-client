@@ -16,7 +16,7 @@ export default function Settings() {
   const [name, setName] = useState<string>()
   const [household, setHousehold] = useState<string>()
   const [email, setEmail] = useState<boolean>(true)
-  const [file, setFile] = useState<any>()
+  // const [file, setFile] = useState<any>()
 
   useEffect(() => {
     if (householdId) {

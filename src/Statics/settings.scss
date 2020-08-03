@@ -9,7 +9,7 @@
   border-radius: 12px;
 
   @include lg {
-    margin-top: 120px;
+    margin-top: 60px;
     opacity: 1;
   }
 
@@ -53,6 +53,74 @@
       width: 16px;
       height: 16px;
       margin-bottom: 7px;
+    }
+  }
+}
+
+.admin-settings-page {
+  margin-top: 0 !important;
+
+  form {
+    .form-field{
+      margin-bottom: 10px;
+
+      input {
+        width: 100%;
+      }
+      
+      label {
+        margin-right: 10px;
+        font-weight: 400;
+      }
+
+      input[type="text"], input[type="password"], input[type="email"] {
+        max-width: 70vw;
+        padding: 6px 10px;
+        border: 0;
+        outline: none;
+        border-radius: 4px;
+        transition: all 0.3s ease; 
+    
+        &:focus {
+          box-shadow: 0 0 0 2px blue;
+        }
+      }
+    }
+
+    .form-footer {
+      text-align: center;
+    }
+  }
+
+  .admin-settings {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    border-radius: 16px;
+    background-color: $color-soft-green;
+  
+    padding: 5px 15px;
+    margin: 5px;
+
+    button {
+      width: auto;
+      margin: 0;
+      padding: 0;
+      background-color: #7ac76900 !important;
+      transition: all 1s ease;
+
+      img {
+        width: 14px;
+      }
+
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
     }
   }
 }

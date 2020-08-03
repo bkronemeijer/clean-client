@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUserHouseholdId } from '../../store/user/selectors'
-import { fetchTasks } from '../../store/task/actions'
-import { selectTasks } from '../../store/task/selectors'
+import { fetchAllCurrentTasks } from '../../store/task/actions'
+import { selectCurrentTasks } from '../../store/task/selectors'
 import { Task } from '../../Types/model'
 import TaskCard from '../../components/TaskCard'
 import Loading from '../../components/Loading'
@@ -13,14 +13,20 @@ export default function TaskPage() {
   const dispatch = useDispatch()
   const householdId = useSelector(selectUserHouseholdId)
   const household = useSelector(selectHouseholdWithUsers)
-  const tasks = useSelector(selectTasks)
+  const tasks = useSelector(selectCurrentTasks)
+
+  if (tasks) {
+    //@ts-ignore
+    tasks.forEach(task => console.log(task.taskSchedules))
+  }
+    
 
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
 
   useEffect(() => {
-    dispatch(fetchTasks(householdId, household.recurrence))
+    dispatch(fetchAllCurrentTasks(householdId, household.recurrence))
   }, [dispatch, householdId, household])
 
   return (

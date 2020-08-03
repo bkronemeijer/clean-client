@@ -5,7 +5,8 @@ const initialState = {
   loginSucces: null,
   name: null,
   email: null,
-  householdId: null
+  householdId: null,
+  isAdmin: null
 };
 
 export default (state = initialState, action: any) => {
@@ -18,7 +19,8 @@ export default (state = initialState, action: any) => {
         id: action.payload.id,
         name: action.payload.name,
         email: action.payload.email,
-        householdId: action.payload.householdId
+        householdId: action.payload.householdId,
+        isAdmin: action.payload.isAdmin
       }
     
     case LOGIN_FAIL: 

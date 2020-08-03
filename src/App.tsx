@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import HouseholdPage from './pages/HouseholdPage';
 import TaskPage from './pages/TaskPage';
 import Signup from './pages/Signup';
@@ -16,15 +16,24 @@ import { selectLoggedInName } from './store/user/selectors';
 import MessageBox from './components/MessageBox';
 import { selectAppLoading } from './store/appState/selectors';
 import Loading from './components/Loading';
+import AdminSettings from './pages/AdminSettings';
 
 function App() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const user = useSelector(selectLoggedInName)
   const isLoading = useSelector(selectAppLoading);
+  const token = localStorage.getItem("token")
   
   useEffect(() => {
     dispatch(getUserWithStoredToken());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!token) {
+      history.push("/login")
+    }
+  }, [history, token])
 
   return (
     <div className="App">
@@ -41,6 +50,7 @@ function App() {
           <Route path="/signup" component={Signup}/>
           <Route path="/login" component={Login}/>
           <Route path="/settings" component={Settings}/>
+          <Route path="/admin-settings" component={AdminSettings}/>
         </Switch>
       </div>
     </div>

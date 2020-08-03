@@ -5,3 +5,6 @@ This is the client repository of the Dustly project. It is still an MVP, more fe
 
 ### Wireframe
 ![wireframe](https://github.com/bkronemeijer/clean-client/blob/master/Screenshot%202020-08-03%20at%2011.24.18.png)
+
+### Deployed version
+A deployed version of Dustly can be found on https://dustly.herokuapp.com .

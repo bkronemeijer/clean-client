@@ -13,7 +13,6 @@ import MemberSettings from '../../components/Settings/MemberSettings'
 import HouseholdSettings from '../../components/Settings/HouseholdSettings'
 import AddNewTask from '../../components/Settings/AddNewTask'
 
-
 export default function AdminSettings() {
   const dispatch = useDispatch()
   const householdId = useSelector(selectUserHouseholdId)

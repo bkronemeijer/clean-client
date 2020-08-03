@@ -23,22 +23,26 @@
 .household-background {
   display: flex;
   justify-content: center;
-  height: 80vh;
+  // background-attachment: fixed;
+  min-height: 80vh;
+  height: 100%;
   width: 100vw;
   background-image: url(./assets/Home.svg);
   background-repeat: no-repeat;
   background-position: left;
   object-fit: cover;
-
+  
   @include lg {
     background-position: center;
   }
 }
 
 .household-background2 {
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
-  height: 80vh;
+  min-height: 80vh;
+  height: 100%;
   width: 100vw;
   background-image: url(./assets/Home2.svg);
   background-repeat: no-repeat;
@@ -51,7 +55,9 @@
 }
 
 .household-background3 {
-  height: 80vh;
+  background-attachment: fixed;
+  height: 100%;
+  min-height: 80vh;
   width: 100vw;
   background-image: url(./assets/geheel.svg);
   background-repeat: no-repeat;
@@ -64,9 +70,11 @@
 }
 
 .settings-background {
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
-  height: 80vh;
+  min-height: 80vh;
+  height: 100%;
   width: 100vw;
   background-image: url(./assets/Whiteboard.svg);
   background-repeat: no-repeat;

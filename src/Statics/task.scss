@@ -15,6 +15,12 @@
       padding: $margin-mobile;
       width: 80vw;
 
+      background: #ffffff; /* Old browsers */
+      background: -moz-linear-gradient(left,  #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left,  #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right,  #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 */
+
       @include lg {
         width: 350px;
       }

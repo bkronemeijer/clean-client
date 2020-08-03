@@ -8,3 +8,25 @@ This is the client repository of the Dustly project. It is still an MVP, more fe
 
 ### Deployed version
 A deployed version of Dustly can be found on https://dustly.herokuapp.com .
+
+### Used technologies
+
+- Frontend
+  - Typescript
+  - React
+  - Redux
+  - Axios
+  - Moment
+  
+- Backend
+  - Express
+  - Sequelize
+  - Postgres
+  - Node-schedule
+  
+### Demo
+![signup](https://github.com/bkronemeijer/clean-client/blob/master/Demo%20Screenshots/signup.gif)
+![home-age](https://github.com/bkronemeijer/clean-client/blob/master/Demo%20Screenshots/Screenshot%202020-08-03%20at%2017.55.23.png)
+![task-page](https://github.com/bkronemeijer/clean-client/blob/master/Demo%20Screenshots/Screenshot%202020-08-03%20at%2018.00.59.png)
+![my-task-page](https://github.com/bkronemeijer/clean-client/blob/master/Demo%20Screenshots/Screenshot%202020-08-03%20at%2018.01.07.png)
+

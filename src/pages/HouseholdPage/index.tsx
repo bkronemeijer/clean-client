@@ -6,6 +6,8 @@ import UserRow from '../../components/UserRow'
 import { selectUserHouseholdId } from '../../store/user/selectors'
 import { User } from '../../Types/model'
 import Loading from '../../components/Loading'
+import thumbsup from '../../Statics/assets/thumb-up.svg'
+import thumbsdown from '../../Statics/assets/thumb-down.svg'
 
 export default function HouseholdPage() {
   const dispatch = useDispatch()
@@ -29,8 +31,8 @@ export default function HouseholdPage() {
                 <thead>
                   <tr>
                     <th></th>
-                    <th>V</th>
-                    <th>X</th>
+                    <th><img src={thumbsup} alt="V"/></th>
+                    <th><img src={thumbsdown} alt="X"/></th>
                   </tr>
                 </thead>
                 <tbody>

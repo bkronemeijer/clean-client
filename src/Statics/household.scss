@@ -14,10 +14,11 @@
     text-align: left;
   }
 
-  // tr {
-  //   background-color: salmon;
-  //   margin: 5px;
-  // }
+  th {
+    img {
+      padding-bottom: 10px;
+    }
+  }
 
   table {
     table-layout: fixed;

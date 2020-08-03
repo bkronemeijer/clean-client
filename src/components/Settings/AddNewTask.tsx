@@ -21,7 +21,7 @@ export default function AddNewTask(props: Props) {
   const [description, setDescription] = useState<string>("")
   const [userId, setUserId] = useState<number>(0)
   const householdId = props.household.id
-  const deadline = moment().add(props.household.recurrence)
+  const deadline = moment().add(props.household.recurrence, 'd')
 
   const addNewTask = (e: any) => {
     e.preventDefault()

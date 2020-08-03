@@ -22,18 +22,8 @@ export default function TaskCard(props: Props) {
   const {task, currentTasks} = props
   const title = capitalize(task.title)
   const desc = capitalize(task.description)
-  // const name = capitalize(task.taskSchedules[0].user.name)
-  // const isDone = task.taskSchedules[0].isDone
 
   const currentTask = currentTasks ? currentTasks.find((currentTask) => currentTask.id === task.id) : "no one"
-
-  if (currentTask){
-    if (currentTask !== "no one" && currentTask.taskSchedules) {
-      console.log('task', task, 'currentTask', 
-      //@ts-ignore
-      currentTask.taskSchedules[0].user.name)
-    }
-  }
 
   return (
     <div className="task-card">

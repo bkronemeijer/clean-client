@@ -4,18 +4,10 @@
   align-items: center;
   justify-content: flex-start;
 
-  @include lg {
-    margin-top: 30px;
-  }
-
   .task-card-container {
     display: flex;
     flex-direction: column;
 
-    @include lg {
-      flex-direction: row;
-    }
-    
     .task-card {
       border: 1px solid grey;
       border-radius: 4px;

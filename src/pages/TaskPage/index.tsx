@@ -13,8 +13,8 @@ export default function TaskPage() {
   const dispatch = useDispatch()
   const householdId = useSelector(selectUserHouseholdId)
   const household = useSelector(selectHouseholdWithUsers)
-  // const tasks = useSelector(selectTasks)
-  const tasks = useSelector(selectCurrentTasks)
+  const tasks = useSelector(selectTasks)
+  const currentTasks = useSelector(selectCurrentTasks)
 
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))
@@ -37,7 +37,9 @@ export default function TaskPage() {
                   {
                     tasks.map((task: Task) => {
                       return (
-                        <TaskCard key={task.id} task={task}/>
+                        <TaskCard key={task.id} task={task} 
+                        //@ts-ignore
+                        currentTasks={currentTasks}/>
                       )
                     })
                   }

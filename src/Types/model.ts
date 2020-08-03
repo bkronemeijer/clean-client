@@ -48,6 +48,7 @@ export type CurrentTask = {
   userId: number
   taskId: number
   length: number
+  taskSchedules: TaskSchedules[]
 }
 
 export type Message = {

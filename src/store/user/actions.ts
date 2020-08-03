@@ -210,13 +210,10 @@ export function deleteUser (userId: number, householdId: number) {
         }
       })
 
-      console.log(response.data)
-      
       if (response.status >= 200 || response.status < 300) {
         dispatch(
           //@ts-ignore
           fetchHouseholdWithUsers(householdId))
-        console.log(response.data)
       }
     } catch (error) {
       if (error.response) {
@@ -229,3 +226,4 @@ export function deleteUser (userId: number, householdId: number) {
     }
   }
 }
+

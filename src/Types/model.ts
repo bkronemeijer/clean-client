@@ -37,6 +37,7 @@ export type Task = {
 export type TaskSchedules = {
   isDone: boolean
   user: User
+  deadline: Date
 }
 
 export type CurrentTask = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUserHouseholdId } from '../../store/user/selectors'
 import { fetchTasks } from '../../store/task/actions'
@@ -11,6 +11,7 @@ import { fetchHouseholdWithUsers } from '../../store/household/actions'
 import TaskSettings from '../../components/Settings/TaskSettings'
 import MemberSettings from '../../components/Settings/MemberSettings'
 import HouseholdSettings from '../../components/Settings/HouseholdSettings'
+import AddNewTask from '../../components/Settings/AddNewTask'
 
 
 export default function AdminSettings() {
@@ -19,12 +20,14 @@ export default function AdminSettings() {
   const household = useSelector(selectHouseholdWithUsers)
   const tasks = useSelector(selectTasks)
 
+  console.log("tsks", tasks)
+
   useEffect(() => {
     dispatch(fetchHouseholdWithUsers(householdId))
   }, [dispatch, householdId])
 
   useEffect(() => {
-    dispatch(fetchTasks(householdId, household.recurrence))
+    dispatch(fetchTasks(householdId))
   }, [dispatch, householdId, household])
 
 
@@ -40,6 +43,7 @@ export default function AdminSettings() {
                 <TaskSettings key={task.id} task={task} household={household}/>
               )
             })}
+            <AddNewTask household={household} tasks={tasks}/>
 
             <h2>Members</h2>
             {household.users.map((user: User) => {

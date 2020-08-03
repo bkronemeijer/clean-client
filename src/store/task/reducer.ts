@@ -1,7 +1,8 @@
-import { TASKS_FETCHED, CURRENT_TASK_FETCHED, LOG_OUT } from "../StoreTypes/actionTypes";
+import { TASKS_FETCHED, CURRENT_TASK_FETCHED, ALL_CURRENT_TASKS_FETCHED, LOG_OUT } from "../StoreTypes/actionTypes";
 
 const initialState = {
   tasks: null,
+  currentTasks: null,
   currentTask: null
 }
 
@@ -11,6 +12,12 @@ export default (state = initialState, action: any) => {
       return {
         ...state,
         tasks: action.payload
+      }
+
+    case ALL_CURRENT_TASKS_FETCHED:
+      return {
+        ...state,
+        currentTasks: action.payload
       }
 
     case CURRENT_TASK_FETCHED:

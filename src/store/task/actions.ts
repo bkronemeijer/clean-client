@@ -1,10 +1,13 @@
 import {apiUrl} from '../../config/constants'
 import axios from 'axios'
 import { Dispatch } from 'redux'
-import { GetState, fetchCurrentTaskType } from '../StoreTypes/actionTypes'
-import {
+import { 
+  GetState, 
   TASKS_FETCHED,
   CURRENT_TASK_FETCHED,
+  ALL_CURRENT_TASKS_FETCHED,
+  fetchCurrentTaskType, 
+  fetchAllCurrentTasksType,
   fetchTask
 } from '../StoreTypes/actionTypes'
 import { Task } from '../../Types/model'
@@ -16,6 +19,11 @@ export const tasksFetched = (tasks: Task[]): fetchTask => ({
   payload: tasks
 })
 
+export const allCurrentTasksFetched = (currentTasks: Task[]): fetchAllCurrentTasksType => ({
+  type: ALL_CURRENT_TASKS_FETCHED,
+  payload: currentTasks
+})
+
 export const currentTaskFetched = (currentTask: Task): fetchCurrentTaskType => ({
   type: CURRENT_TASK_FETCHED,
   payload: currentTask
@@ -23,13 +31,48 @@ export const currentTaskFetched = (currentTask: Task): fetchCurrentTaskType => (
 
 
 
-export function fetchTasks (householdId: number, recurrence: number) {
+export function fetchTasks (householdId: number) {
+  return async function thunk (dispatch: Dispatch, getState: GetState) {
+    if (!householdId ) {
+      return
+    }
+
+    const fetchUrl = `${apiUrl}/task/static`
+    const token = localStorage.getItem("token")
+
+    try {
+      const response = await axios.post(fetchUrl, {
+        householdId,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+  
+      if (response.status >= 200 || response.status < 300) {
+        console.log(response.data, 'RESPONSE')
+        dispatch(tasksFetched(response.data))
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        // dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        // dispatch(setMessage("danger", true, error.message));
+      }
+    }
+
+  }
+}
+
+export function fetchAllCurrentTasks (householdId: number, recurrence: number) {
   return async function thunk (dispatch: Dispatch, getState: GetState) {
     if (!householdId || !recurrence) {
       return
     }
 
-    const fetchUrl = `${apiUrl}/task`
+    const fetchUrl = `${apiUrl}/task/current`
     const token = localStorage.getItem("token")
 
     try {
@@ -43,7 +86,7 @@ export function fetchTasks (householdId: number, recurrence: number) {
       })
   
       if (response.status >= 200 || response.status < 300) {
-        dispatch(tasksFetched(response.data))
+        dispatch(allCurrentTasksFetched(response.data))
       }
     } catch (error) {
       if (error.response) {
@@ -144,13 +187,50 @@ export function deleteTask (taskId: number, userId: number, recurrence: number) 
         }
       })
 
+      if (response.status >= 200 || response.status < 300) {
+        dispatch(
+          //@ts-ignore
+          fetchTasks(userId, recurrence))
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        // dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        // dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  }
+}
+
+export function addTask (userId: number, deadline: any, householdId: number, title: string, description: string, recurrence: number) {
+  return async function thunk (dispatch: Dispatch, getState: GetState) {
+    if (!userId || !householdId || !deadline || !title || !description || !recurrence) {
+      return
+    }
+    const addUrl = `${apiUrl}/task/add`
+    const token = localStorage.getItem("token")
+
+    try {
+      const response = await axios.post(addUrl, {
+        userId,
+        householdId,
+        deadline,
+        title,
+        description,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
       console.log(response.data)
       
       if (response.status >= 200 || response.status < 300) {
         dispatch(
           //@ts-ignore
-          fetchTasks(userId, recurrence))
-        console.log(response.data)
+          fetchTasks(householdId, recurrence))
       }
     } catch (error) {
       if (error.response) {

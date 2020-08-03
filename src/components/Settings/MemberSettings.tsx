@@ -1,7 +1,9 @@
 import React from 'react'
 import { User } from '../../Types/model'
 import { deleteUser } from '../../store/user/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import crossmark from '../../Statics/assets/x-mark-thin.svg'
+import { selectLoggedInUserId } from '../../store/user/selectors'
 
 type Props = {
   user: User
@@ -9,6 +11,7 @@ type Props = {
 
 export default function TaskSettings(props: Props) {
   const dispatch = useDispatch()
+  const userId = useSelector(selectLoggedInUserId)
 
   const removeMember = (e: any) => {
     console.log("removeMember", props.user.id, props.user.householdId)
@@ -16,9 +19,18 @@ export default function TaskSettings(props: Props) {
   }
 
   return (
-    <div className="admin-settings">
-      <p>{props.user.name}</p>
-      <button onClick={e => removeMember(e)}>X</button>
-    </div>
+    <>
+    {
+      props.user.id === userId ?
+        <div className="admin-settings">
+          <p>{props.user.name}</p>
+        </div>
+      :
+        <div className="admin-settings">
+          <p>{props.user.name}</p>
+          <button onClick={e => removeMember(e)}><img src={crossmark} alt="X"/></button>
+        </div>
+      }
+    </>  
   )
 }

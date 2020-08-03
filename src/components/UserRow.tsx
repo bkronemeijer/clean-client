@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { User } from '../Types/model';
-import { useDispatch } from 'react-redux';
-import { fetchCurrentTask } from '../store/task/actions';
 
 type Props = {
   info: User;
@@ -9,11 +7,7 @@ type Props = {
 };
 
 export default function UserRow(props: Props) {
-  const {id, name, successes, fails} = props.info
-
-  // useEffect(() => {
-  //   dispatch(fetchCurrentTask(userId, props.recurrence))
-  // }, [dispatch, userId, props.recurrence])
+  const {name, successes, fails} = props.info
 
   return (
     <tr>

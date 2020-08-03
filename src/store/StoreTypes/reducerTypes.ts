@@ -5,5 +5,5 @@ export type UserInStore = {
 }
 
 export type TaskInStore = {
-  tasks: Task[]; currentTask: CurrentTask
+  tasks: Task[]; currentTasks: Task[]; currentTask: CurrentTask
 }

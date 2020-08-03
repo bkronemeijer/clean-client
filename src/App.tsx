@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import HouseholdPage from './pages/HouseholdPage';
 import TaskPage from './pages/TaskPage';
 import Signup from './pages/Signup';
@@ -20,12 +20,20 @@ import AdminSettings from './pages/AdminSettings';
 
 function App() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const user = useSelector(selectLoggedInName)
   const isLoading = useSelector(selectAppLoading);
+  const token = localStorage.getItem("token")
   
   useEffect(() => {
     dispatch(getUserWithStoredToken());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!token) {
+      history.push("/login")
+    }
+  }, [history, token])
 
   return (
     <div className="App">

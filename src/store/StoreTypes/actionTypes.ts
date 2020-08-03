@@ -18,6 +18,7 @@ export const HOUSEHOLD_USERS_FETCHED = "HOUSEHOLD_USERS_FETCHED"
 
 // TASK ACTION TYPES
 export const TASKS_FETCHED = "TASKS_FETCHED"
+export const ALL_CURRENT_TASKS_FETCHED = "ALL_CURRENT_TASKS_FETCHED"
 export const CURRENT_TASK_FETCHED = "CURRENT_TASK_FETCHED"
 
 // APPSTATE ACTION TYPES
@@ -77,6 +78,12 @@ export type fetchTask = {
   type: typeof TASKS_FETCHED
   payload: Task[]
 }
+
+export type fetchAllCurrentTasksType = {
+  type: typeof ALL_CURRENT_TASKS_FETCHED
+  payload: Task[]
+}
+
 
 export type fetchCurrentTaskType = {
   type: typeof CURRENT_TASK_FETCHED

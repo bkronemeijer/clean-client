@@ -1,5 +1,6 @@
 .settings {
   width: max-content;
+  max-width: 80vw;
   height: max-content;
   padding: 50px 30px;
   text-align: left;
@@ -62,6 +63,7 @@
 
   .settings {
     width: 400px;
+    max-width: 80vw;
   }
 
   summary {
